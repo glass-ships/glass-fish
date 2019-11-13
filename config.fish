@@ -7,8 +7,20 @@ alias gs='git status'
 
 alias pls='sudo -E'
 
+alias buildcdms='bash packages/cdms-jupyterlab/build.sh'
+
+alias howbig='du -csh $argv'
+
+alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
+
 function cs 
-    cd $argv && ls -al
+    cd $argv[1] 
+    ls -al
+end
+
+function move
+    mkdir -p $argv[2]
+    mv $argv[1] $argv[2]
 end
 
 ## Options etc.
@@ -16,3 +28,4 @@ end
 set -e SSH_ASKPASS
 set -e GIT_ASKPASS
 
+source  $HOME/packages/anaconda3/etc/fish/conf.d/conda.fish
