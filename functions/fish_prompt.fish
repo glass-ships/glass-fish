@@ -24,4 +24,10 @@ function fish_prompt
     printf "\n"; printf "><" # (date "+$c0%H.%M.%S")
     printf $c3; printf (whoami); printf "$c4@"; printf $c3; printf (hostname)
     printf "$c4> "
+
+    #printf "$c2\n["(date "+$c0%H.%M.%S")"]$c4["(pwd | sed "s,/,$c2/$c3,g")
+    # | sed "s,\(.*\)/[^m]*m,\1/,")
+    #printf "\n><"
+    #printf $c3(whoami); printf "$c4@"; printf $c3; printf (hostname)
+    #printf "$c4> "
 end

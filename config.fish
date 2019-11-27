@@ -10,7 +10,7 @@ alias pls='sudo -E'
 alias buildcdms='bash packages/cdms-jupyterlab/build.sh'
 
 alias howbig='du -csh $argv'
-
+alias upd='sudo apt update -y && sudo apt dist-upgrade -y'
 alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
 
 function cs 
@@ -28,4 +28,4 @@ end
 set -e SSH_ASKPASS
 set -e GIT_ASKPASS
 
-source  $HOME/packages/anaconda3/etc/fish/conf.d/conda.fish
+source  /opt/anaconda3/etc/fish/conf.d/conda.fish
