@@ -1,3 +1,4 @@
+# Customize FISH Prompt
 function fish_prompt
   # remove welcome message
   set -e fish_greeting

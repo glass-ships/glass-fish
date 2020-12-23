@@ -6,9 +6,11 @@ $ cd glass-fish
 $ fish init.sh 
 ```
 
-Recommended but optional: 
+Optional: 
 ```
 $ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-$ fisher add franciscolourenco/done
 $ fisher add edc/bass
 ```
+
+- [Fisher](https://github.com/jorgebucaran/fisher): Fish plugin manager
+- [EDC/Bass](https://github.com/edc/bass): Some BASH compatibility support for Fish
