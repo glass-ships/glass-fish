@@ -3,7 +3,7 @@
 ```
 $ git clone https://gitlab.com/glass-ships/glass-fish
 $ cd glass-fish
-$ fish init.sh 
+$ fish setup.fish
 ```
 
 Optional: 
