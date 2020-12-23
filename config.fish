@@ -26,7 +26,7 @@ alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
 
 alias build-cdms='bash $HOME/dev/cdms-jupyterlab/build.sh'
 
-alias centroot='docker run --rm -it -v ~/.ssh:$HOME/.ssh:ro -p 8888:8888 glasslabs/centroot:latest'
+alias centroot='docker run --rm -it -v ~/.ssh:/home/eris/.ssh:ro -p 8888:8888 glasslabs/centroot:0.5'
 
 ### misc chains and functions
 
