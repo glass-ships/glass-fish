@@ -1,11 +1,17 @@
-#### Options etc.
+########################
+####  Options etc.  ####
+########################
 
 # force command-line password entry 
 set -e SSH_ASKPASS
 set -e GIT_ASKPASS
 
-#### Aliases and functions
+####################################
+#### Aliases and functions      ####
+####################################
+
 ### general cli
+
 alias ll='ls -alF'
 
 alias env='env | sort'
@@ -17,9 +23,11 @@ alias howbig='du -csh $argv'
 alias upd='sudo apt update -y && sudo apt dist-upgrade -y'
 
 ### git
+
 alias gs='git status'
 
 ### docker
+
 alias docker-rm-containers='docker rm (docker ps -a -q)'
 
 alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
@@ -33,6 +41,11 @@ alias centroot='docker run --rm -it -v ~/.ssh:/home/eris/.ssh:ro -p 8888:8888 gl
 alias cleanup="bash -c 'rm -rf **/*~ **/__pycache__ build dist *.egg-info awkward1/*.so **/*.pyc'"
 
 alias cmake-try='cd build ;; rm -rf ./* ;; cmake .. ;; make'
+
+
+############################
+#### General functions  ####
+############################
 
 # cd and ls
 function cs
@@ -63,6 +76,9 @@ function build-ksc
   cd -
 end
 
-######
+##################################
+#### Scripts and Env          ####
+##################################
+
 source /opt/anaconda3/etc/fish/conf.d/conda.fish
 conda activate base
