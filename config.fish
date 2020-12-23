@@ -10,8 +10,8 @@ set -e GIT_ASKPASS
 #### Scripts and Env          ####
 ##################################
 
-source /opt/anaconda3/etc/fish/conf.d/conda.fish
-conda activate base
+#source /opt/anaconda3/etc/fish/conf.d/conda.fish
+#conda activate base
 
 ####################################
 #### Aliases and functions      ####
