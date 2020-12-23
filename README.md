@@ -1,7 +1,7 @@
 ### Setup
 
 ```
-$ git clone https://gitlab.com/glass-ships/glass-fish
+$ git clone https://gitlab.com/glass-ships/glass-fish.git
 $ cd glass-fish
 $ fish setup.fish
 ```
