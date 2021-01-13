@@ -33,6 +33,8 @@ alias upd='sudo apt update -y && sudo apt dist-upgrade -y'
 
 alias gs='git status'
 
+alias bfg='java -jar /home/glass/dev/bfg-1.13.1.jar'
+
 ### docker
 
 alias docker-rm-containers='docker rm (docker ps -a -q)'
