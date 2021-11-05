@@ -1,5 +1,9 @@
 ### Setup
 
+Custom theme for fish, with some built in convenience functions. 
+
+See [functions](functions) and 
+
 ```
 $ git clone https://gitlab.com/glass-ships/glass-fish.git
 $ cd glass-fish

@@ -2,7 +2,7 @@
 ####  Options etc.  ####
 ########################
 
-# force command-line password entry 
+# force command-line password entry for ssh and git 
 set -e SSH_ASKPASS
 set -e GIT_ASKPASS
 
@@ -10,14 +10,17 @@ set -e GIT_ASKPASS
 #### Scripts and Env          ####
 ##################################
 
+# Uncomment and tweak to your anaconda3 installation if you have one
 #source /opt/anaconda3/etc/fish/conf.d/conda.fish
 #conda activate base
+
+source secrets.fish
 
 ####################################
 #### Aliases and functions      ####
 ####################################
 
-### general cli
+### general cli convenience functions
 
 alias ll='ls -alF'
 
@@ -28,6 +31,8 @@ alias please='sudo -E'
 alias howbig='du -csh $argv'
 
 alias upd='sudo apt update -y && sudo apt dist-upgrade -y'
+
+alias jlab='jupyter lab --no-browser'
 
 ### git
 
@@ -41,12 +46,8 @@ alias docker-rm-containers='docker rm (docker ps -a -q)'
 
 alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
 
-alias build-cdms='bash $HOME/dev/cdms-jupyterlab/build.sh'
-
 alias centroot='docker run --rm -it -v ~/.ssh:/home/loki/.ssh:ro -p 8888:8888 glasslabs/centroot:0.5'
 
 ### misc chains and functions
-
-alias cleanup="bash -c 'rm -rf **/*~ **/__pycache__ build dist *.egg-info awkward1/*.so **/*.pyc'"
 
 alias cmake-try='cd build ;; rm -rf ./* ;; cmake .. ;; make'
