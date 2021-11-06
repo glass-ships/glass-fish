@@ -1,7 +1,7 @@
 # Customize FISH Prompt
 function fish_prompt
   # remove welcome message
-  set -e fish_greeting
+  set -U fish_greeting
   # $status gets nuked as soon as something else is run, e.g. set_color
   # so it has to be saved asap.
   set -l last_status $status
@@ -30,11 +30,9 @@ function fish_prompt
   set __fish_git_prompt_char_stashstate '↩'
   set __fish_git_prompt_char_upstream_ahead '+'
   set __fish_git_prompt_char_upstream_behind '-'
-  
-  ###
    
   # set some colors
-  set -g cp (set_color 8D3AF2) # 
+  set -g cp (set_color 8D3AF2) # purple
   set -g c0 (set_color 4F81FF) # blue
   set -g c1 (set_color 31FA3A) # green
   set -g c2 (set_color F2E03A) # yellow
@@ -46,18 +44,16 @@ function fish_prompt
   # display, then when you press enter.
   printf "\033[K"
 
-  # time, pwd, prompt
-  printf "$c4\n["; printf (pwd | sed "s,/,$c2/$c3,g") # | sed "s,\(.*\)/[^m]*m,\1/,")
-  printf "$c4 %s]" (__fish_git_prompt)
-  printf "\n"; printf "><" # (date "+$c0%H.%M.%S")
-  printf $c3; printf (whoami); printf "$c4@"; printf $c3; printf (hostname)
-  printf "$c4> "
-
-  #printf "$c2\n["(date "+$c0%H.%M.%S")"]$c4["(pwd | sed "s,/,$c2/$c3,g")
-  # | sed "s,\(.*\)/[^m]*m,\1/,")
-  #printf "\n><"
-  #printf $c3(whoami); printf "$c4@"; printf $c3; printf (hostname)
-  #printf "$c4> "
+  ### construct prompt
+  # timestamp 
+  printf "$cp\n["(date "+$c2%H:%M")"$cp]"
+  # current dir
+  printf (pwd | sed "s,/,$c2/$c3,g") 
+  # git status
+  printf "$c4%s" (__fish_git_prompt)
+  # user and host in a fish
+  printf "\n><$c3"(whoami)"$c4@$c3"(hostname)"$c4> "
 
   set_color normal
 end
+
