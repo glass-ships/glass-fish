@@ -54,8 +54,6 @@ alias jlab='jupyter lab --no-browser'
 
 alias gs='git status'
 
-alias gc='[ "`git log --pretty=%H ...refs/heads/master^ | head -n 1`" = "`git ls-remote origin -h refs/heads/master |cut -f1`" ] ;; echo "up to date" || echo "not up to date"'
-
 ### docker aliases
 
 alias docker-rm-containers='docker rm (docker ps -a -q)'
