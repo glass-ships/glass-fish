@@ -38,7 +38,7 @@ function move
   mv $argv[2] $argv[3]
 end
 
-alias ll='ls -alF'
+alias ll='ls -al1vF'
 
 alias env='env | sort' # sorted env
 
@@ -53,6 +53,7 @@ alias jlab='jupyter lab --no-browser'
 ### git aliases
 
 alias gs='git status'
+alias ship='git add -A ;; git commit -am $argv ;; git push'
 
 ### docker aliases
 
@@ -60,12 +61,17 @@ alias docker-rm-containers='docker rm (docker ps -a -q)'
 
 alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
 
-# runs a CentOS with ROOT docker image. See https://gitlab.com/glass-ships/centroot for more information
-alias centroot='docker run --rm -it -v ~/.ssh:/home/loki/.ssh:ro -p 8888:8888 glasslabs/centroot:0.5'
-
 ### misc chains and functions
+#
+alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
+alias discord-env='source ~/dev/discord-env/bin/activate.fish'
 
-# clean build dir and try again
-alias cmake-try='cd build ;; rm -rf ./* ;; cmake .. ;; make'
+# TISLab aliases
+alias koza-env='source ~/dev/tislab/koza/koza-env/bin/activate.fish'
+alias monarch-env='source ~/dev/tislab/monarch-ingest/monarch-env/bin/activate.fish'
 
+####################################
 set -e DIR
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/glass/dev/google-cloud-sdk/path.fish.inc' ]; . '/home/glass/dev/google-cloud-sdk/path.fish.inc'; end

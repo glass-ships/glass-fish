@@ -24,6 +24,8 @@ read -l -P 'Please enter your Git username: ' gituser
 read -l -P 'Please enter your Git email: ' gitemail
 git config --global user.name "$gituser"
 git config --global user.email "$gitemail"
+git config --global init.defaultBranch main # set default branch to "main" instead of "master"
+
 
 
 # set git to globally ignore ipynb_checkpoints
