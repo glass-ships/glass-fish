@@ -17,7 +17,7 @@ set -e GIT_ASKPASS
 #source /opt/anaconda3/etc/fish/conf.d/conda.fish
 #conda activate base
 
-source $DIR/secrets.fish
+source $DIR/secrets.fish || True
 
 ####################################
 #### Aliases and functions      ####
@@ -28,7 +28,7 @@ source $DIR/secrets.fish
 # cd and ls
 function cs
   cd $argv[1]
-  pwd
+  # pwd
   ls -al
 end
 
@@ -42,7 +42,7 @@ alias ll='ls -al1vF'
 
 alias env='env | sort' # sorted env
 
-alias please='sudo -E' # sudo with user's env vars
+alias pls='sudo -E' # sudo with user's env vars
 
 alias howbig='du -csh $argv' # check a folder size
 
