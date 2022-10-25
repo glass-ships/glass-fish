@@ -4,28 +4,27 @@ set DIR (dirname (status --current-filename))
 
 ###  Options etc.
 
-# force command-line password entry for ssh and git 
+# Force command-line password entry for ssh and git 
 set -e SSH_ASKPASS
 set -e GIT_ASKPASS
 
 ### Scripts and Env
 
+# Enable conda for fish
+source ~/anaconda3/etc/fish/conf.d/conda.fish
+
+# Source secrets as env vars
 source $DIR/secrets.fish || true
 
-### Aliases and functions
+# so poetry stops complaining
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
+# Source custom aliases and functions
 for file in $DIR/functions/*
     if test $file != $DIR"/functions/fish_prompt.fish"
         source $file
     end
 end
 
-#
-set -e DIR
 ####################################
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /home/glass/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
+set -e DIR

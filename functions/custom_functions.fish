@@ -12,3 +12,10 @@ function move
   mkdir -p $argv[3]
   mv $argv[2] $argv[3]
 end
+
+### Git functions
+function ship
+  git add -A
+  git commit -am $argv
+  git push
+end

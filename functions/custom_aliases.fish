@@ -18,7 +18,6 @@ alias jlab='jupyter lab --no-browser'
 ### Git aliases
 
 alias gs='git status'
-alias ship='git add -A ;; git commit -am $argv ;; git push'
 
 ### Docker aliases
 
@@ -28,8 +27,8 @@ alias docker-rm-containers='docker rm (docker ps -a -q)'
 ### misc chains and functions
 
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
-alias discord-env='source ~/dev/discord-env/bin/activate.fish'
-alias ssh-compass='ssh root@143.198.106.233'
+alias discord-env='source ~/dev/DISCORD/discord-env/bin/activate.fish'
+alias ssh-compass='ssh root@146.190.220.140'
 
 ### TISLab aliases
 alias koza-env='source ~/dev/TISLAB/koza/koza-env/bin/activate.fish'
