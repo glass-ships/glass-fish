@@ -27,10 +27,9 @@ alias docker-rm-containers='docker rm (docker ps -a -q)'
 ### misc chains and functions
 
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
-alias discord-env='source ~/dev/DISCORD/discord-env/bin/activate.fish'
+
+alias discord-env='source ~/dev/DISCORD/compass-bot/.venv/bin/activate.fish'
+
 alias ssh-compass='ssh root@146.190.220.140'
 
 ### TISLab aliases
-alias koza-env='source ~/dev/TISLAB/koza/koza-env/bin/activate.fish'
-alias ingest-env='source ~/dev/TISLAB/monarch-ingest/ingest-env/bin/activate.fish'
-alias doc-env='source ~/dev/TISLAB/tech-docs/doc-env/bin/activate.fish'
