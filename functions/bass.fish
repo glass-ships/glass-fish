@@ -1,3 +1,5 @@
+#!/usr/bin/env fish
+
 function bass
   set -l bash_args $argv
   set -l bass_debug

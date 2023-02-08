@@ -46,7 +46,7 @@ function fish_prompt
 
   ### construct prompt
   # timestamp 
-  printf "$cp\n\n["(date "+$c2%H:%M")"$cp]"
+  printf "$cp\n["(date "+$c2%H:%M")"$cp]"
   # current dir
   printf (pwd | sed "s,/,$c2/$c3,g") 
   # git status

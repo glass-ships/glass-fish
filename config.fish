@@ -5,7 +5,7 @@ set DIR (dirname (status --current-filename))
 ###  Options etc. ###
 #####################
 
-# Force command-line password entry for ssh and git 
+# Force cmdline password entry for ssh and git 
 set -e SSH_ASKPASS
 set -e GIT_ASKPASS
 
@@ -16,25 +16,32 @@ umask 022
 ######################
 
 # Source secrets as env vars, if present
-source $DIR/secrets.fish || true
+if test -e $DIR/secrets.fish
+    source $DIR/secrets.fish
+end
 
-# Enable conda for fish
-#source ~/anaconda3/etc/fish/conf.d/conda.fish
+# Enable conda for fish, if present
+if test -e ~/anaconda3/etc/fish/conf.d/conda.fish
+    source ~/anaconda3/etc/fish/conf.d/conda.fish
+end
 
-### Poetry stuff
+### Poetry settings
 set -gx POETRY_HOME /opt/poetry
 fish_add_path -agP /opt/poetry/bin
-# poetry config virtualenvs.in-project true
-
-# so poetry stops complaining about keyrings
+poetry config virtualenvs.in-project true
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring 
 
 ####################################
 ### Custom Aliases and Functions ###
 ####################################
 
-for file in $DIR/functions/*
-    if test $file != $DIR"/functions/fish_prompt.fish"
+for file in $DIR/functions/*.fish
+    switch $file
+    case $DIR"/functions/fish_prompt.fish"
+        continue
+    case $DIR"/functions/bass.fish"
+        continue
+    case "*"
         source $file
     end
 end
