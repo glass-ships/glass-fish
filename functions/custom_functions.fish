@@ -38,6 +38,3 @@ function update-cloudflared -d "update cloudflared"
     rm cloudflared-linux-amd64.deb
 end
 
-
-
-

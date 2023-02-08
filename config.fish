@@ -42,9 +42,14 @@ for file in $DIR/functions/*.fish
     case $DIR"/functions/bass.fish"
         continue
     case "*"
+        # echo "importing $file"
         source $file
     end
 end
 
 ####################################
+
+# Call load_nvm to listen on directory change
+load_nvm > /dev/stderr
+
 set -e DIR
