@@ -26,6 +26,7 @@ function keep
 end
 
 ### Git functions
+
 function ship
     git add -A
     git commit -am $argv
