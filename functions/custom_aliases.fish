@@ -18,6 +18,9 @@ alias jlab='jupyter lab --no-browser'
 ### Git aliases
 
 alias gs='git status'
+alias gco='git checkout'
+alias gadd='git add -A'
+alias gcam='git commit -am'
 
 ### Docker aliases
 
@@ -27,9 +30,7 @@ alias docker-rm-containers='docker rm (docker ps -a -q)'
 ### misc chains and functions
 
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
-
 alias discord-env='source ~/dev/DISCORD/compass-bot/.venv/bin/activate.fish'
-
 alias ssh-compass='ssh root@146.190.220.140'
 
 ### TISLab aliases
