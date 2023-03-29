@@ -32,5 +32,3 @@ alias docker-rm-containers='docker rm (docker ps -a -q)'
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 alias discord-env='source ~/dev/DISCORD/compass-bot/.venv/bin/activate.fish'
 alias ssh-compass='ssh root@146.190.220.140'
-
-### TISLab aliases
