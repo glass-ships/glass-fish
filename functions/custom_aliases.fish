@@ -21,6 +21,7 @@ alias gs='git status'
 alias gco='git checkout'
 alias gadd='git add -A'
 alias gcam='git commit -am'
+alias gba='git branch -a'
 
 ### Docker aliases
 
