@@ -28,6 +28,10 @@ alias gba='git branch -a'
 alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
 alias docker-rm-containers='docker rm (docker ps -a -q)'
 
+### GCP aliases
+
+alias gcssh='gcloud compute ssh'
+
 ### misc chains and functions
 
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
