@@ -34,6 +34,8 @@ alias gcssh='gcloud compute ssh'
 
 ### misc chains and functions
 
+alias clear-poetry-cache='poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
+
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 alias discord-env='source ~/dev/DISCORD/compass-bot/.venv/bin/activate.fish'
 alias ssh-compass='ssh root@146.190.220.140'
