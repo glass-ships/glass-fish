@@ -22,6 +22,7 @@ alias gco='git checkout'
 alias gadd='git add -A'
 alias gcam='git commit -am'
 alias gba='git branch -a'
+alias gbd='git branch -d'
 
 ### Docker aliases
 
@@ -34,7 +35,7 @@ alias gcssh='gcloud compute ssh'
 
 ### misc chains and functions
 
-alias clear-poetry-cache='poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
+alias poetry-clear='poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
 
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 alias discord-env='source ~/dev/DISCORD/compass-bot/.venv/bin/activate.fish'
