@@ -25,11 +25,16 @@ if test -e ~/anaconda3/etc/fish/conf.d/conda.fish
     source ~/anaconda3/etc/fish/conf.d/conda.fish
 end
 
+# Enable rust, if present
+if test -e ~/.cargo/bin
+    fish_add_path -agP ~/.cargo/bin
+end
+
 ### Poetry settings
+set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring 
 set -gx POETRY_HOME /opt/poetry
 fish_add_path -agP /opt/poetry/bin
 poetry config virtualenvs.in-project true
-set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring 
 
 ####################################
 ### Custom Aliases and Functions ###
