@@ -15,7 +15,7 @@ umask 022
 ### Env / Scripts  ###
 ######################
 
-# Specify PATH based on bash default (/etc/environment)
+# Reset PATH based on system default (/etc/environment)
 set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
 
 # Source secrets as env vars, if present
@@ -31,13 +31,15 @@ end
 ### Poetry settings
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 set -gx POETRY_HOME /opt/poetry
-fish_add_path -agP /opt/poetry/bin
-# poetry config virtualenvs.in-project true
+fish_add_path -gpP /opt/poetry/bin
+poetry config virtualenvs.in-project true
+set -u VIRTUAL_ENV
+set -u VIRTUAL_ENV_PROMPT
 
 
 # Enable rust, if present
 if test -e ~/.cargo/bin
-    fish_add_path -agP ~/.cargo/bin
+    fish_add_path -gpP ~/.cargo/bin
 end
 
 ####################################
