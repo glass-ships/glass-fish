@@ -1,10 +1,11 @@
 ### TISLAB functions
 
 alias mdocs='cd ~/dev/TISLab/monarch-technical-documentation'
-alias mpy='cd ~/dev/TISLab/monarch-py'
 alias mapp='cd ~/dev/TISLab/monarch-app'
 alias mingest='cd ~/dev/TISLab/monarch-ingest'
-alias mui='cd ~/dev/TISLab/monarch-ui'
+alias mkoza='cd ~/dev/TISLab/koza'
+alias mmapping='cd ~/dev/TISLab/monarch-mapping-commons'
+alias mstack='cd ~/dev/TISLab/monarch-stack-v3'
 
 function test-koza
     cd ~/dev/TISLab/koza/

@@ -15,6 +15,9 @@ umask 022
 ### Env / Scripts  ###
 ######################
 
+# Specify PATH based on bash default (/etc/environment)
+set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
+
 # Source secrets as env vars, if present
 if test -e $DIR/secrets.fish
     source $DIR/secrets.fish
@@ -25,16 +28,17 @@ if test -e ~/anaconda3/etc/fish/conf.d/conda.fish
     source ~/anaconda3/etc/fish/conf.d/conda.fish
 end
 
+### Poetry settings
+set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
+set -gx POETRY_HOME /opt/poetry
+fish_add_path -agP /opt/poetry/bin
+# poetry config virtualenvs.in-project true
+
+
 # Enable rust, if present
 if test -e ~/.cargo/bin
     fish_add_path -agP ~/.cargo/bin
 end
-
-### Poetry settings
-set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring 
-set -gx POETRY_HOME /opt/poetry
-fish_add_path -agP /opt/poetry/bin
-poetry config virtualenvs.in-project true
 
 ####################################
 ### Custom Aliases and Functions ###
@@ -42,19 +46,28 @@ poetry config virtualenvs.in-project true
 
 for file in $DIR/functions/*.fish
     switch $file
-    case $DIR"/functions/fish_prompt.fish"
-        continue
-    case $DIR"/functions/bass.fish"
-        continue
-    case "*"
-        # echo "importing $file"
-        source $file
+        case $DIR"/functions/fish_prompt.fish"
+            continue
+        case $DIR"/functions/bass.fish"
+            continue
+        case "*"
+            # echo "importing $file"
+            source $file
     end
 end
 
 ####################################
+### Additional Configs and Paths ###
+####################################
 
 # Call load_nvm to listen on directory change
-load_nvm > /dev/stderr
+if test -e $HOME/.nvm/nvm.sh
+    load_nvm >/dev/stderr
+end
+
+# configure thefuck 
+# thefuck --alias | source
+
+####################################
 
 set -e DIR
