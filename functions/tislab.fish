@@ -14,3 +14,8 @@ function test-koza
     poetry run pip uninstall koza -y
     poetry run pip install ../koza/dist/koza-0.3.0-py3-none-any.whl
 end
+
+function fix-solr-perms
+    sudo chgrp -R 8983 /home/glass/.data/monarch 
+    sudo chmod -R g+w /home/glass/.data/monarch
+end
