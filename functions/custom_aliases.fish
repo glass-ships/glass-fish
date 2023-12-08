@@ -19,8 +19,7 @@ alias gadd='git add -A'
 alias gcam='git commit -am'
 alias gba='git branch -a'
 alias gbd='git branch -d'
-alias git-cleanup-branches='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
-# alias git-cleanup-branches='git branch --merged main | grep -v "^[ *]*main$" | xargs git branch -d'
+alias grpo='git remote prune origin'
 
 ### Docker aliases
 

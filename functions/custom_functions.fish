@@ -53,6 +53,15 @@ function pull-all -d "git pull all repos in specified dirs"
     echo \n All done!
 end
 
+function git-cleanup-branches -d "git delete local branches not on remote"
+    for branch in (git branch --merged main)
+        set b (string trim -r -l $branch)
+        if not string match -q "*main" $b
+            git branch -d $b
+        end
+    end
+end
+
 ### Cloudflare stuff
 
 function update-cloudflared -d "update cloudflared"
