@@ -45,6 +45,7 @@ alias gcssh='gcloud compute ssh'
 
 ### misc chains and aliases
 
+alias get-spotify-playlists="cd ~/dev/spotipy-stuff ;; poetry -C ~/dev/DISCORD/compass-bot run python scripts/download_spotify_playlists.py -u oceanblocker ;; cd -" 
 alias install-rust="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 alias vscode='/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 alias ssh-compass='ssh root@146.190.220.140'
