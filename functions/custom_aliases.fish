@@ -29,6 +29,9 @@ alias gadd='git add -A'
 alias gcam='git commit -am'
 alias gba='git branch -a'
 alias gbd='git branch -d'
+alias gstash='git stash'
+alias gpop='git stash pop'
+alias gsl='git stash list'
 alias grpo='git remote prune origin'
 
 
