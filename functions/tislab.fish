@@ -16,7 +16,7 @@ function test-koza
     poetry build 
     cd ~/dev/TISLab/monarch-ingest 
     poetry run pip uninstall koza -y
-    poetry run pip install ../koza/dist/koza-0.5.2-py3-none-any.whl
+    poetry run pip install ../koza/dist/koza-0.5.4-py3-none-any.whl
 end
 
 function fix-solr-perms
