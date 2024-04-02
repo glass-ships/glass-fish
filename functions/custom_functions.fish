@@ -38,8 +38,8 @@ function pull-all -d "git pull all repos in specified dirs"
         echo \nPulling all repos in (pwd)...
         for repo in *
             if test -d $repo && test -d $repo/.git
-                echo -------------------------
-                echo $repo
+                echo ————————————————————————————————————————
+                echo Pulling ($repo)...             
                 cd $repo
                 git pull
                 cd ..
@@ -69,4 +69,3 @@ function update-cloudflared -d "update cloudflared"
     sudo dpkg -i cloudflared-linux-amd64.deb
     rm cloudflared-linux-amd64.deb
 end
-

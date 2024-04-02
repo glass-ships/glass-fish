@@ -1,27 +1,31 @@
 #!/usr/bin/env fish
 
-### General aliases
+### General ###
 
 alias ll='ls -al1vF'
 alias env='env | sort'          # sorted env
+alias grep='grep -n'            # always grep with line numbers
+alias sfind='sudo find / -name' # find search entire filesystem
 alias pls='sudo -E'             # sudo with user's env vars
 alias howbig='du -csh $argv'    # check a folder size
 alias upd='sudo apt update -y && sudo apt full-upgrade -y'
+
+### Directory Navigation ###
+alias home='cd ~'
+alias dev='cd ~/dev'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-
-### Python/Poetry aliases
+### Python/Poetry ###
 
 alias wpy='which python'
 alias poetry-clear='poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
 alias jlab='jupyter lab --no-browser' # start jupyter lab
 
-
-### Git aliases
+### Git ###
 
 alias gs='git status'
 alias gco='git checkout'
@@ -34,19 +38,18 @@ alias gpop='git stash pop'
 alias gsl='git stash list'
 alias grpo='git remote prune origin'
 
-
-### Docker aliases
+### Docker ###
 
 alias docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
 alias docker-rm-containers='docker rm (docker ps -a -q)'
 
 
-### GCP aliases
+### GCP ###
 
 alias gcssh='gcloud compute ssh'
 
 
-### misc chains and aliases
+### Misc ###
 
 alias get-spotify-playlists="cd ~/dev/spotipy-stuff ;; poetry -C ~/dev/DISCORD/compass-bot run python scripts/download_spotify_playlists.py -u oceanblocker ;; cd -" 
 alias install-rust="curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
