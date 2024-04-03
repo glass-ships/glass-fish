@@ -11,20 +11,20 @@ alias howbig='du -csh $argv'    # check a folder size
 alias upd='sudo apt update -y && sudo apt full-upgrade -y'
 
 ### Directory Navigation ###
-alias home='cd ~'
-alias dev='cd ~/dev'
-alias -='cd -'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
+abbr -a home 'cd ~'
+abbr -a dev 'cd ~/dev'
+abbr -a -- - 'cd -'
+abbr -a .. 'cd ..'
+abbr -a ... 'cd ../..'
+abbr -a .... 'cd ../../..'
+abbr -a ..... 'cd ../../../..'
+abbr -a ...... 'cd ../../../../..'
 
 ### Python/Poetry ###
 
-alias wpy='which python'
+abbr -a wpy 'which python'
+abbr -a jlab 'jupyter lab --no-browser' # start jupyter lab
 alias poetry-clear='poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
-alias jlab='jupyter lab --no-browser' # start jupyter lab
 
 ### Git ###
 
