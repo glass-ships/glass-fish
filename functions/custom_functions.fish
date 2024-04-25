@@ -39,7 +39,7 @@ function pull-all -d "git pull all repos in specified dirs"
         for repo in *
             if test -d $repo && test -d $repo/.git
                 echo ————————————————————————————————————————
-                echo Pulling ($repo)...             
+                echo Pulling $repo...             
                 cd $repo
                 git pull
                 cd ..

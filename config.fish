@@ -28,11 +28,13 @@ if test -e ~/anaconda3/etc/fish/conf.d/conda.fish
     source ~/anaconda3/etc/fish/conf.d/conda.fish
 end
 
-### Poetry settings
+### Python/Poetry settings
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 set -gx POETRY_HOME /opt/poetry
 fish_add_path -gpP /opt/poetry/bin
-poetry config virtualenvs.in-project true
+if type -q poetry
+    poetry config virtualenvs.in-project true
+end
 set -u VIRTUAL_ENV
 set -u VIRTUAL_ENV_PROMPT
 
