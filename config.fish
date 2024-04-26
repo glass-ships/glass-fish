@@ -37,10 +37,16 @@ if type -q poetry
 end
 set -u VIRTUAL_ENV
 set -u VIRTUAL_ENV_PROMPT
+# pyenv settings
+if test -d ~/dev/.pyenv
+    fish_add_path -gpP ~/dev/.pyenv/bin
+    set -gx PYENV_ROOT ~/dev/.pyenv
+    set -gx PATH $PYENV_ROOT/shims $PATH
+    pyenv init - | source
+end
 
-
-# Enable rust, if present
-if test -e ~/.cargo/bin
+### Enable rust, if present
+if test -d ~/.cargo/bin
     fish_add_path -gpP ~/.cargo/bin
 end
 
