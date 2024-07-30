@@ -28,7 +28,21 @@ if test -e ~/anaconda3/etc/fish/conf.d/conda.fish
     source ~/anaconda3/etc/fish/conf.d/conda.fish
 end
 
-### Python/Poetry settings
+# Mambaforge settings
+if test -f /home/ge2/mambaforge/bin/conda
+    eval /home/ge2/mambaforge/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/ge2/mambaforge/etc/fish/conf.d/conda.fish"
+        . "/home/ge2/mambaforge/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/ge2/mambaforge/bin" $PATH
+    end
+end
+if test -e /home/ge2/mambaforge/etc/fish/conf.d/mamba.fish
+    source /home/ge2/mambaforge/etc/fish/conf.d/mamba.fish
+end
+
+# Python/Poetry settings
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 set -gx POETRY_HOME /opt/poetry
 fish_add_path -gpP /opt/poetry/bin
@@ -37,6 +51,7 @@ if type -q poetry
 end
 set -u VIRTUAL_ENV
 set -u VIRTUAL_ENV_PROMPT
+
 # pyenv settings
 if test -d ~/dev/.pyenv
     fish_add_path -gpP ~/dev/.pyenv/bin
@@ -61,7 +76,7 @@ for file in $DIR/functions/*.fish
         case $DIR"/functions/bass.fish"
             continue
         case "*"
-            # echo "importing $file"
+            echo "importing $file"
             source $file
     end
 end
@@ -73,6 +88,8 @@ end
 # Call load_nvm to listen on directory change
 if test -e $HOME/.nvm/nvm.sh
     load_nvm >/dev/stderr
+else
+    echo "nvm not found" >/dev/stderr
 end
 
 # configure thefuck 

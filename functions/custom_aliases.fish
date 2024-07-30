@@ -23,6 +23,7 @@ abbr -a ...... 'cd ../../../../..'
 ### Python/Poetry ###
 
 abbr -a wpy 'which python'
+abbr -a pyver 'python --version'
 abbr -a jlab 'jupyter lab --no-browser' # start jupyter lab
 alias poetry-clear='poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
 

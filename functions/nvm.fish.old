@@ -30,4 +30,3 @@ function load_nvm --on-variable="PWD"
     nvm use default
   end
 end
-
