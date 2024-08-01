@@ -23,24 +23,6 @@ if test -e $DIR/secrets.fish
     source $DIR/secrets.fish
 end
 
-# Enable conda for fish, if present
-if test -e ~/anaconda3/etc/fish/conf.d/conda.fish
-    source ~/anaconda3/etc/fish/conf.d/conda.fish
-end
-
-# Mambaforge settings
-if test -f /home/ge2/mambaforge/bin/conda
-    eval /home/ge2/mambaforge/bin/conda "shell.fish" "hook" $argv | source
-else
-    if test -f "/home/ge2/mambaforge/etc/fish/conf.d/conda.fish"
-        . "/home/ge2/mambaforge/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "/home/ge2/mambaforge/bin" $PATH
-    end
-end
-if test -e /home/ge2/mambaforge/etc/fish/conf.d/mamba.fish
-    source /home/ge2/mambaforge/etc/fish/conf.d/mamba.fish
-end
 
 # Python/Poetry settings
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
@@ -95,6 +77,9 @@ end
 # configure thefuck 
 # thefuck --alias | source
 
-####################################
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
 
+####################################
 set -e DIR
