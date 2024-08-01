@@ -57,22 +57,22 @@ abbr -a grpo 'git remote prune origin'
 # Docker #
 #--------#
 
-abbr -a docker-cleanup='docker rmi (docker images -f "dangling=true" -q)'
-abbr -a docker-rm-containers='docker rm (docker ps -a -q)'
+abbr -a docker-cleanup 'docker rmi (docker images -f "dangling=true" -q)'
+abbr -a docker-rm-containers 'docker rm (docker ps -a -q)'
 
 
 #-----#
 # GCP #
 #-----#
 
-abbr -a gcssh'gcloud compute ssh'
+abbr -a gcssh 'gcloud compute ssh'
 
 
 #------#
 # Misc #
 #------#
 
-abbr -a get-spotify-playlists"cd ~/dev/spotipy-stuff ;; poetry -C ~/dev/DISCORD/compass-bot run python scripts/download_spotify_playlists.py -u oceanblocker ;; cd -" 
+abbr -a get-spotify-playlists 'cd ~/dev/spotipy-stuff ;; poetry -C ~/dev/DISCORD/compass-bot run python scripts/download_spotify_playlists.py -u oceanblocker ;; cd -'
 abbr -a install-rust "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 abbr -a vscode '/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 abbr -a ssh-compass 'ssh root@146.190.220.140'

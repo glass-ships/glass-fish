@@ -58,7 +58,7 @@ for file in $DIR/functions/*.fish
         case $DIR"/functions/bass.fish"
             continue
         case "*"
-            echo "importing $file"
+            # echo "importing $file"
             source $file
     end
 end
@@ -69,7 +69,8 @@ end
 
 # Call load_nvm to listen on directory change
 if test -e $HOME/.nvm/nvm.sh
-    load_nvm >/dev/stderr
+    # load_nvm >/dev/stderr
+    echo "nvm found"
 else
     echo "nvm not found" >/dev/stderr
 end
