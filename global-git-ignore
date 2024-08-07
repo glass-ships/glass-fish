@@ -3,5 +3,7 @@ glass-test.sh
 .condaconfig
 env.fish
 
+.vscode/
+
 .ipynb_checkpoints
 */.ipynb_checkpoints
