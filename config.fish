@@ -36,9 +36,9 @@ end
 #------------------------#
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 set -gx POETRY_HOME /opt/poetry
-if type -q poetry
+if test -d /opt/poetry/bin
     fish_add_path -gpP /opt/poetry/bin
-    poetry config virtualenvs.in-project true
+poetry config virtualenvs.in-project true
 end
 set -u VIRTUAL_ENV
 set -u VIRTUAL_ENV_PROMPT
