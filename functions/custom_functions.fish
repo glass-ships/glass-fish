@@ -1,10 +1,20 @@
 #!/usr/bin/env fish
 
-function cs -d "cd and ls"
+function cs -d "cd and ls (with auto conda activation)"
     cd $argv[1]
     ls -al
 end
 
+function conda_activate --on-variable PWD -d "activate conda env"
+    if [ -f (pwd)/.condaconfig ]
+        set -gx CONDACONFIGDIR (pwd)
+        conda activate (cat .condaconfig)
+    end
+    if not [ (string match "*$CONDACONFIGDIR*" (pwd)) ]
+        set -e CONDACONFIGDIR
+        conda deactivate
+    end
+end
 
 function move -d "mv, create dir if DNE"
     mkdir -p $argv[3]
@@ -39,7 +49,7 @@ function pull-all -d "git pull all repos in specified dirs"
         for repo in *
             if test -d $repo && test -d $repo/.git
                 echo ————————————————————————————————————————
-                echo Pulling $repo...             
+                echo Pulling $repo...
                 cd $repo
                 git pull
                 cd ..

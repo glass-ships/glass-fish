@@ -5,6 +5,8 @@ set DIR (dirname (status --current-filename))
 ###  Options etc. ###
 #####################
 
+set -e OLDPWD
+
 # Force cmdline password entry for ssh and git 
 set -e SSH_ASKPASS
 set -e GIT_ASKPASS
