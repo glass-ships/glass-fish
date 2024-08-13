@@ -10,6 +10,7 @@ abbr -a sfind 'sudo find / -name' # find search entire filesystem
 abbr -a pls 'sudo -E'             # sudo with user's env vars
 abbr -a howbig 'du -csh $argv'    # check a folder size
 abbr -a upd 'sudo apt update -y && sudo apt full-upgrade -y'
+abbr -a res 'echo $status'        # echo the last command's exit status
 
 #------------#
 # Navigation #
