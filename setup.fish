@@ -26,14 +26,13 @@ git config --global user.name "$gituser"
 git config --global user.email "$gitemail"
 git config --global init.defaultBranch main # set default branch to "main" instead of "master"
 
-# set git to globally ignore ipynb_checkpoints
-echo -e '\nSetting Git default ignores...\n'
+# set global gitignore
+rm -f ~/.gitignore
+ln -s $DIR/gitignore ~/.gitignore
 git config --global core.excludesfile '~/.gitignore'
-echo -e '.ipynb_checkpoints' >> ~/.gitignore
-echo -e '*/.ipynb_checkpoints' >> ~/.gitignore
 
 # set default name for new git repos
 git config --global init.defaultBranch main
 
-
+############################################
 echo -e '\nglass-fish setup is complete!\n' 

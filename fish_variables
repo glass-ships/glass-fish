@@ -42,6 +42,7 @@ SETUVAR _fish_abbr_mstack:cd\x20\x7e/dev/TISLab/monarch\x2dstack\x2dv3
 SETUVAR _fish_abbr_pls:sudo\x20\x2dE
 SETUVAR _fish_abbr_poetry_2D_clear:poetry\x20cache\x20clear\x20_default_cache\x20\x2d\x2dall\x20\x3b\x3b\x20poetry\x20cache\x20clear\x20PyPI\x20\x2d\x2dall
 SETUVAR _fish_abbr_pyver:python\x20\x2d\x2dversion
+SETUVAR _fish_abbr_res:echo\x20\x24status
 SETUVAR _fish_abbr_sfind:sudo\x20find\x20/\x20\x2dname
 SETUVAR _fish_abbr_ssh_2D_compass:ssh\x20root\x40146\x2e190\x2e220\x2e140
 SETUVAR _fish_abbr_upd:sudo\x20apt\x20update\x20\x2dy\x20\x26\x26\x20sudo\x20apt\x20full\x2dupgrade\x20\x2dy
