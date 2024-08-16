@@ -17,8 +17,13 @@ function conda_activate --on-variable PWD -d "activate conda env"
 end
 
 function move -d "mv, create dir if DNE"
-    mkdir -p $argv[3]
-    mv $argv[2] $argv[3]
+    set destination $argv[-1]
+    set -l files $argv[1..-2]
+    echo "Moving to $destination/:" (string join ', ' $files)
+    if not test -d $destination
+        mkdir -p $destination
+    end
+    mv $files $destination
 end
 
 
