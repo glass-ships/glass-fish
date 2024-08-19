@@ -7,7 +7,7 @@ ln -s $DIR $HOME/.config/fish
 
 # VIM settings
 echo -e '\nCopying VIM settings...\n'
-cp vimrc $HOME/.vimrc
+cp .vimrc $HOME/.vimrc
 
 echo -e '\nChecking for SSH key...\n'
 if not test -e ~/.ssh/id_rsa
