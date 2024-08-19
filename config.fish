@@ -23,7 +23,7 @@ set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP
 set -gx XDG_CONFIG_HOME $HOME/.config
 
 # Source secrets as env vars, if present
-if test -e $DIR/secrets.fish
+if test -e $DIR/secrets.fish || test -L $DIR/secrets.fish
     source $DIR/secrets.fish
 end
 

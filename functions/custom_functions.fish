@@ -77,6 +77,22 @@ function git-cleanup-branches -d "git delete local branches not on remote"
     end
 end
 
+function gl-clone -d "gitlab clone with personal token"
+    # check env for token
+    if not set -q GITLAB_PAT
+        echo "Please set the GITLAB_PAT variable"
+        return
+    end
+    set -l org $argv[1]
+    set -l repo $argv[2]
+    # if directory provided, clone to it
+    if test -d $argv[3]
+        git clone https://oauth2:$GITLAB_PAT@gitlab.com/$org/$repo $argv[3]
+    else
+        git clone https://oauth2:$GITLAB_PAT@gitlab.com/$org/$repo
+    end
+end
+
 ### Cloudflare stuff
 
 function update-cloudflared -d "update cloudflared"
