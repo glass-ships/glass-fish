@@ -20,6 +20,7 @@ umask 022
 # Reset PATH based on system default (/etc/environment)
 set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
 
+set -gx GDK_BACKEND wayland,x11
 set -gx XDG_CONFIG_HOME $HOME/.config
 
 # Source secrets as env vars, if present

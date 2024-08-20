@@ -78,6 +78,15 @@ function git-cleanup-branches -d "git delete local branches not on remote"
 end
 
 function gl-clone -d "gitlab clone with personal token"
+    set --local options "o/ornl"
+    argparse $options -- $argv
+
+    if set --query _flag_o
+        set -l url "code.ornl.gov"
+    else
+        set -l url "gitlab.com"
+    end
+
     # check env for token
     if not set -q GITLAB_PAT
         echo "Please set the GITLAB_PAT variable"
@@ -87,9 +96,9 @@ function gl-clone -d "gitlab clone with personal token"
     set -l repo $argv[2]
     # if directory provided, clone to it
     if test -d $argv[3]
-        git clone https://oauth2:$GITLAB_PAT@gitlab.com/$org/$repo $argv[3]
+        git clone https://oauth2:$GITLAB_PAT@$url/$org/$repo $argv[3]
     else
-        git clone https://oauth2:$GITLAB_PAT@gitlab.com/$org/$repo
+        git clone https://oauth2:$GITLAB_PAT@$url/$org/$repo
     end
 end
 
