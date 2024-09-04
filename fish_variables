@@ -10,6 +10,7 @@ SETUVAR _fish_abbr__2E_2E_2E_2E_2E_2E_:cd\x20\x2e\x2e/\x2e\x2e/\x2e\x2e/\x2e\x2e
 SETUVAR _fish_abbr_cact:conda\x20activate
 SETUVAR _fish_abbr_cdlds:cd\x20\x7e/dev/ornl/live_data_server
 SETUVAR _fish_abbr_cdmantid:cd\x20\x7e/dev/ornl/mantid
+SETUVAR _fish_abbr_cdref:cd\x20\x7e/dev/ornl/refl1d
 SETUVAR _fish_abbr_cenv:conda\x20env\x20list
 SETUVAR _fish_abbr_dev:cd\x20\x7e/dev
 SETUVAR _fish_abbr_docker_2D_cleanup:docker\x20rmi\x20\x28docker\x20images\x20\x2df\x20\x22dangling\x3dtrue\x22\x20\x2dq\x29
