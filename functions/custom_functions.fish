@@ -78,13 +78,13 @@ function git-cleanup-branches -d "git delete local branches not on remote"
 end
 
 function gl-clone -d "gitlab clone with personal token"
-    set --local options "o/ornl"
+    set -l options "o/ornl"
     argparse $options -- $argv
 
-    if set --query _flag_o
-        set -l url "code.ornl.gov"
+    if set --query _flag_ornl
+        set url "code.ornl.gov"
     else
-        set -l url "gitlab.com"
+        set url "gitlab.com"
     end
 
     # check env for token
@@ -95,11 +95,13 @@ function gl-clone -d "gitlab clone with personal token"
     set -l org $argv[1]
     set -l repo $argv[2]
     # if directory provided, clone to it
+    printf "Cloning $url/$org/$repo"
     if test -d $argv[3]
         git clone https://oauth2:$GITLAB_PAT@$url/$org/$repo $argv[3]
     else
         git clone https://oauth2:$GITLAB_PAT@$url/$org/$repo
     end
+    set -e url
 end
 
 ### Cloudflare stuff

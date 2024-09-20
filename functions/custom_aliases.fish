@@ -60,6 +60,9 @@ abbr -a grpo 'git remote prune origin'
 
 abbr -a docker-cleanup 'docker rmi (docker images -f "dangling=true" -q)'
 abbr -a docker-rm-containers 'docker rm (docker ps -a -q)'
+# sudo docker rm -v $(sudo docker ps -a -q -f status=exited)
+# sudo docker rmi -f  $(sudo docker images -f "dangling=true" -q)
+# docker volume ls -qf dangling=true | xargs -r docker volume rm
 
 
 #-----#
