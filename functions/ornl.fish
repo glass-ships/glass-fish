@@ -1,8 +1,10 @@
 # cd shortcuts
 
-abbr -a cdmantid 'cd ~/dev/ornl/mantid'
 abbr -a cdlds 'cd ~/dev/ornl/live_data_server'
+abbr -a cdmantid 'cd ~/dev/ornl/mantid'
 abbr -a cdref 'cd ~/dev/ornl/refl1d'
+abbr -a cdsans 'cd ~/dev/ornl/sans-backend'
+abbr -a cdwebref 'cd ~/dev/ornl/web_reflectivity'
 
 
 function vpn -d "Connect/Disconnect to ORNL VPN/show status"
