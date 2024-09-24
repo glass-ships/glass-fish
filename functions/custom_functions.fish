@@ -83,8 +83,10 @@ function gl-clone -d "gitlab clone with personal token"
 
     if set --query _flag_ornl
         set url "code.ornl.gov"
+        set TOKEN $ORNL_PAT
     else
         set url "gitlab.com"
+        set TOKEN $GITLAB_PAT
     end
 
     # check env for token
@@ -97,9 +99,9 @@ function gl-clone -d "gitlab clone with personal token"
     # if directory provided, clone to it
     printf "Cloning $url/$org/$repo"
     if test -d $argv[3]
-        git clone https://oauth2:$GITLAB_PAT@$url/$org/$repo $argv[3]
+        git clone https://oauth2:$TOKEN@$url/$org/$repo $argv[3]
     else
-        git clone https://oauth2:$GITLAB_PAT@$url/$org/$repo
+        git clone https://oauth2:$TOKEN@$url/$org/$repo
     end
     set -e url
 end
