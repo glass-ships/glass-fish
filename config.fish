@@ -83,9 +83,9 @@ end
 ### Additional Configs and Paths ###
 ####################################
 
-if test -e $HOME/.nvm/nvm.sh
-    # load_nvm >/dev/stderr
+if test -e $HOME/.config/nvm/nvm.sh
     echo "nvm found"
+    load_nvm >/dev/stderr
 else
     echo "nvm not found" >/dev/stderr
 end
