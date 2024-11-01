@@ -25,11 +25,16 @@ SETUVAR _fish_abbr_gcam:git\x20commit\x20\x2dam
 SETUVAR _fish_abbr_gco:git\x20checkout
 SETUVAR _fish_abbr_gcssh:gcloud\x20compute\x20ssh
 SETUVAR _fish_abbr_get_2D_spotify_2D_playlists:cd\x20\x7e/dev/spotipy\x2dstuff\x20\x3b\x3b\x20poetry\x20\x2dC\x20\x7e/dev/DISCORD/compass\x2dbot\x20run\x20python\x20scripts/download_spotify_playlists\x2epy\x20\x2du\x20oceanblocker\x20\x3b\x3b\x20cd\x20\x2d
+SETUVAR _fish_abbr_glog:git\x20log\x20\x2d\x2doneline\x20\x2d\x2dgraph\x20\x2d\x2ddecorate\x20\x2d\x2dall
 SETUVAR _fish_abbr_gpop:git\x20stash\x20pop
+SETUVAR _fish_abbr_gpull:git\x20pull
 SETUVAR _fish_abbr_grep:grep\x20\x2dn
 SETUVAR _fish_abbr_grpo:git\x20remote\x20prune\x20origin
 SETUVAR _fish_abbr_gs:git\x20status
+SETUVAR _fish_abbr_gsb:git\x20switch
 SETUVAR _fish_abbr_gsl:git\x20stash\x20list
+SETUVAR _fish_abbr_gspop:git\x20stash\x20pop
+SETUVAR _fish_abbr_gss:git\x20status\x20\x2dsb
 SETUVAR _fish_abbr_gstash:git\x20stash
 SETUVAR _fish_abbr_home:cd\x20\x7e
 SETUVAR _fish_abbr_howbig:du\x20\x2dcsh
