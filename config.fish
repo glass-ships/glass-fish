@@ -47,7 +47,7 @@ set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
 set -gx POETRY_HOME /opt/poetry
 if test -d /opt/poetry/bin
     fish_add_path -gpP /opt/poetry/bin
-poetry config virtualenvs.in-project true
+    poetry config virtualenvs.in-project true
 end
 set -u VIRTUAL_ENV
 set -u VIRTUAL_ENV_PROMPT
@@ -116,7 +116,7 @@ set -e DIR
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f $HOME/miniforge3/bin/conda
-    eval $HOME/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+    eval $HOME/miniforge3/bin/conda "shell.fish" hook $argv | source
 else
     if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
         . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
@@ -125,4 +125,3 @@ else
     end
 end
 # <<< conda initialize <<<
-
