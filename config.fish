@@ -23,7 +23,10 @@ set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP
 set -gx GDK_BACKEND wayland,x11
 set -gx XDG_CONFIG_HOME $HOME/.config
 
-# Source secrets as env vars, if present
+#----------------------------------------#
+# Source secrets as env vars, if present #
+#----------------------------------------#
+
 if test -e $DIR/secrets.json || test -L $DIR/secrets.json
     # set secrets (cat .glass-secrets/secrets.json | jq -r 'to_entries[] | "\(.key)=\(.value)"')
     set secrets (cat $DIR/secrets.json)
@@ -62,13 +65,6 @@ if test -d ~/dev/.pyenv
     pyenv init - | source
 end
 
-#--------------------------#
-#  Enable rust, if present #
-#--------------------------#
-if test -d ~/.cargo/bin
-    fish_add_path -gpP ~/.cargo/bin
-end
-
 ####################################
 ### Custom Aliases and Functions ###
 ####################################
@@ -96,18 +92,22 @@ else
     echo "nvm not found" >/dev/stderr
 end
 
-
 if type -q direnv
     eval (direnv hook fish)
     # direnv hook fish | source
 end
 
+if test -d ~/.cargo/bin
+    fish_add_path -gpP ~/.cargo/bin
+end
+
+set --export BUN_INSTALL "$HOME/.bun"
+if test -d $BUN_INSTALL
+    set --export PATH $BUN_INSTALL/bin $PATH
+end
+
 # configure thefuck 
 # thefuck --alias | source
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
 
 ####################################
 set -e DIR
