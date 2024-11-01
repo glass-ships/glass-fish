@@ -34,8 +34,6 @@ if test -e $DIR/secrets.json || test -L $DIR/secrets.json
     end
 end
 
-# Parse secrets.json
-
 #-----------------------------------#
 # Conda / Mamba checks and settings #
 #-----------------------------------#
