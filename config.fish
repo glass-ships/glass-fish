@@ -24,9 +24,17 @@ set -gx GDK_BACKEND wayland,x11
 set -gx XDG_CONFIG_HOME $HOME/.config
 
 # Source secrets as env vars, if present
-if test -e $DIR/secrets.fish || test -L $DIR/secrets.fish
-    source $DIR/secrets.fish
+if test -e $DIR/secrets.json || test -L $DIR/secrets.json
+    # set secrets (cat .glass-secrets/secrets.json | jq -r 'to_entries[] | "\(.key)=\(.value)"')
+    set secrets (cat $DIR/secrets.json)
+    for secret in $secrets[2..-2]
+        set key (echo $secret | cut -d':' -f1 | tr -d '"' | tr -d ' ')
+        set value (echo $secret | cut -d':' -f2- | tr -d ",")
+        set -gx $key $value
+    end
 end
+
+# Parse secrets.json
 
 #-----------------------------------#
 # Conda / Mamba checks and settings #

@@ -3,4 +3,4 @@ conf.d/
 fish_plugins
 fishfile
 
-secrets.fish
+secrets.json

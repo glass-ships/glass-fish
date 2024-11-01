@@ -1,4 +1,4 @@
-"""
+echo """
  ________ .__                              _________.__     .__                
  /  _____/ |  |  _____     ______  ______  /   _____/|  |__  |__|______   ______
 /   \  ___ |  |  \__  \   /  ___/ /  ___/  \_____  \ |  |  \ |  |\____ \ /  ___/
@@ -10,43 +10,44 @@
 set DIR (cd (dirname (status -f)); and pwd)
 
 ## "install" glass-fish
-echo -e '\nInstalling glass-fish...\n'
+echo -e '\nInstalling glass-fish...'
 rm -rf ~/.config/fish
 ln -s $DIR $HOME/.config/fish
 
 ## Generate SSH key if it doesn't exist
-echo -e '\nChecking for SSH key...\n'
+echo -e '\nChecking for SSH key...'
 if not test -e ~/.ssh/id_rsa
-	echo -e '\nCreating SSH key...\n'
+	echo -e '\nCreating SSH key...'
         ssh-keygen -t rsa
-        #cp ssh-config ~/.ssh/config
 else
         echo -e '\n\e[95mNOTICE\e[0m: SSH key already exists.'
 end
-
-## VIM settings
-# echo -e '\nCopying VIM settings...\n'
-# cp .vimrc $HOME/.vimrc
-
 
 ####################
 ### Git settings ###
 ####################
 
-## set git user info
-# echo -e '\nSetting Git user info...\n' 
+## set git user info, if not already set
+echo -e '\nSetting Git user info...' 
+
+if not test -n (git config --global user.name)
+        set -l gituser (read -l -P 'Please enter your Git username: ')
+        git config --global user.name $gituser
+else
+        echo -e '\n\e[95mNOTICE\e[0m: Git user name already set.'
+end
+
+if not test -n (git config --global user.email)
+        set -l gitemail (read -l -P 'Please enter your Git email: ')
+        git config --global user.email $gitemail
+else
+        echo -e '\n\e[95mNOTICE\e[0m: Git email already set.'
+end
+
 # read -l -P 'Please enter your Git username: ' gituser
 # read -l -P 'Please enter your Git email: ' gitemail
 # git config --global user.name "$gituser"
 # git config --global user.email "$gitemail"
 
-## set global gitignore
-# rm -f ~/.gitignore
-# ln -s $DIR/gitignore ~/.gitignore
-# git config --global core.excludesfile '~/.gitignore'
-
-## set default name for new git repos
-# git config --global init.defaultBranch main
-
 ############################################
-echo -e '\nglass-fish setup is complete!\n' 
+echo -e '\nglass-fish setup is complete!' 

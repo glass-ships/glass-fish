@@ -57,4 +57,3 @@ set modelines=5
 
 " Use <C-l> to center the cursor
 noremap <C-l> z.
-
