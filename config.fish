@@ -32,7 +32,7 @@ if test -e $DIR/secrets.json || test -L $DIR/secrets.json
     set secrets (cat $DIR/secrets.json)
     for secret in $secrets[2..-2]
         set key (echo $secret | cut -d':' -f1 | tr -d '"' | tr -d ' ')
-        set value (echo $secret | cut -d':' -f2- | tr -d ",")
+        set value (echo $secret | cut -d':' -f2- | tr -d '"' | tr -d ' ' | tr -d "," )
         set -gx $key $value
     end
 end
