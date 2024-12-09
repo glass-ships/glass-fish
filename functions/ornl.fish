@@ -6,6 +6,17 @@ abbr -a cdref 'cd ~/dev/ornl/refl1d'
 abbr -a cdsans 'cd ~/dev/ornl/sans-backend'
 abbr -a cdwebref 'cd ~/dev/ornl/web_reflectivity'
 
+### Refl1D shortcuts ###
+
+function linkbumps -d "Link bumps to the refl1d directory"
+    cd ~/dev/ornl/bumps/bumps/webview/client
+    bun install
+    bun link
+    cd ~/dev/ornl/refl1d/refl1d/webview/client
+    bun link bumps-webview-client
+end
+
+### Mounting analysis server ###
 
 function mount-hfir -d "Mount /HFIR from analysis cluster"
     echo "Mounting /HFIR..."
@@ -41,6 +52,7 @@ function unmount-analysis -d "Unmount the mountpoint for analysis server for giv
     # fusermount3 -u ~/dev/ornl/analysis/SNS/$inst
 end
 
+### VPN shortcuts ###
 
 function vpn -d "Connect/Disconnect to ORNL VPN/show status"
     if test (count $argv) -ne 1
