@@ -97,6 +97,10 @@ if type -q direnv
     # direnv hook fish | source
 end
 
+if test -d ~/.pixi/bin
+    fish_add_path -gpP ~/.pixi/bin
+end
+
 if test -d ~/.cargo/bin
     fish_add_path -gpP ~/.cargo/bin
 end
