@@ -15,6 +15,7 @@ function dev-lr -d "Install local copy of LiquidsReflectometer"
     cd ~/dev/ornl/LiquidsReflectometer
     conda activate refred
     pip install -e .
+    cd -
 end
 
 ### Refl1D shortcuts ###
@@ -39,6 +40,7 @@ function mount-sns -d "Mount /SNS from analysis cluster"
     echo "Mounting /SNS..."
     mkdir -p ~/dev/ornl/analysis/SNS
     sshfs ge2@analysis.sns.gov:/SNS ~/dev/ornl/analysis/SNS
+    # sshfs ge2@analysis.sns.gov:/SNS /
     # if test (count $argv) -ne 1
     #     echo "Usage: mount-sns <instrument>"
     #     return 1

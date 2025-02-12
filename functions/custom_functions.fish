@@ -45,7 +45,8 @@ function pull-all -d "git pull all repos in specified dirs"
     set current_dir (pwd)
     for dir in $argv
         cd $dir
-        echo \nPulling all repos in (pwd)...
+        echo \n========================================
+        echo Pulling all repos in (pwd)...
         for repo in *
             if test -d $repo && test -d $repo/.git
                 echo ————————————————————————————————————————
@@ -55,7 +56,8 @@ function pull-all -d "git pull all repos in specified dirs"
                 cd ..
             end
         end
-        echo \nFinished!
+        echo ————————————————————————————————————————
+        echo \tFinished in (pwd)
         if not test $dir = '.'
             cd $current_dir
         end
