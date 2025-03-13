@@ -122,6 +122,14 @@ function conda_activate --on-variable PWD -d "activate conda env"
         set -e CONDACONFIGDIR
         conda deactivate
     end
+    if [ -f (pwd)/.mambaconfig ]
+        set -gx MAMMACONFIGDIR (pwd)
+        mamba activate (cat .mambaconfig)
+    end
+    if not [ (string match "*$MAMMACONFIGDIR*" (pwd)) ]
+        set -e MAMMACONFIGDIR
+        mamba deactivate
+    end
 end
 
 function install-miniforge -d "install miniforge"
