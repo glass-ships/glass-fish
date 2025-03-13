@@ -49,9 +49,9 @@ function pull-all -d "git pull all repos in specified dirs"
         echo Pulling all repos in (pwd)...
         for repo in *
             if test -d $repo && test -d $repo/.git
-                echo ————————————————————————————————————————
-                echo Pulling $repo...
                 cd $repo
+                echo ————————————————————————————————————————
+                echo Pulling $repo @ (git branch --show-current)...
                 git pull
                 cd ..
             end
@@ -131,7 +131,7 @@ function install-miniforge -d "install miniforge"
 end
 
 function uninstall-miniforge -d "uninstall miniforge"
-    if not [ (count $argv) -eq 0 ] && [ $argv[1] = "check" ]
+    if not [ (count $argv) -eq 0 ] && [ $argv[1] = check ]
         conda init --reverse --dry-run
         return
     else
