@@ -82,6 +82,8 @@ abbr -a gcssh 'gcloud compute ssh'
 # Misc #
 #------#
 
+abbr -a install-bun "curl -fsSL https://bun.sh/install | bash"
+abbr -a install-pixi "curl -fsSL https://pixi.sh/install.sh | bash"
 abbr -a install-rust "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 abbr -a vscode '/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 

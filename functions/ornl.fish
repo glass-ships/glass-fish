@@ -6,7 +6,25 @@ abbr -a cdref 'cd ~/dev/ornl/RefRed'
 abbr -a cdlr 'cd ~/dev/ornl/LiquidsReflectometer'
 abbr -a cdsans 'cd ~/dev/ornl/drtsans'
 abbr -a cdlds 'cd ~/dev/ornl/live_data_server'
-abbr -a cdmantid 'cd ~/dev/ornl/mantid'
+abbr -a cdman 'cd ~/dev/ornl/mantid'
+
+
+### Mantid shortcuts ###
+
+function build-mantid -d "Build Mantid from source"
+    echo "Building Mantid..."
+    cd ~/dev/ornl/mantid
+    cmake --preset=linux -B ~/dev/ornl/_builds/mantid
+end
+
+function test-mantid -d "Run Mantid tests"
+    echo "Running Mantid tests..."
+    cd ~/dev/ornl/_builds/mantid
+    mamba activate mantid-developer
+    ninja AllTests
+end
+
+### Reflectometry shortcuts ###
 
 function dev-lr -d "Install local copy of LiquidsReflectometer"
     echo "Installing local copy of LiquidsReflectometer..."
@@ -30,39 +48,25 @@ end
 
 ### Mounting analysis server ###
 
-function mount-hfir -d "Mount /HFIR from analysis cluster"
-    echo "Mounting /HFIR..."
-    mkdir -p ~/dev/ornl/analysis/HFIR
-    sshfs ge2@analysis.sns.gov:/HFIR ~/dev/ornl/analysis/HFIR # -o defer_permissions,volname=HFIR
-end 
-
-function mount-sns -d "Mount /SNS from analysis cluster"
-    echo "Mounting /SNS..."
-    mkdir -p ~/dev/ornl/analysis/SNS
-    sshfs ge2@analysis.sns.gov:/SNS ~/dev/ornl/analysis/SNS
-    # sshfs ge2@analysis.sns.gov:/SNS /
-    # if test (count $argv) -ne 1
-    #     echo "Usage: mount-sns <instrument>"
-    #     return 1
-    # end
-
-    # set inst $argv[1]
-    # echo "Mounting analysis server for $inst..."
-    # mkdir -p ~/dev/ornl/analysis/SNS/$inst
-    # sshfs ge2@analysis.sns.gov:/SNS/$inst/ ~/dev/ornl/analysis/SNS/$inst # -o defer_permissions,volname=$inst
+function mount-analysis -d "Mount the analysis server directory for given instrument"
+    if test (count $argv) -ne 1
+        echo "Usage: mount-analysis HFIR|SNS"
+        return 1
+    end
+    set inst (string upper $argv[1])
+    echo Mounting analysis server for $inst...
+    mkdir -p ~/dev/ornl/analysis/$inst
+    sshfs ge2@analysis.sns.gov:/$inst ~/dev/ornl/analysis/$inst # -o defer_permissions,volname=$inst
 end
 
 function unmount-analysis -d "Unmount the mountpoint for analysis server for given instrument"
     if test (count $argv) -ne 1
-    #     echo "Usage: unmount-sns <instrument>"
         echo "Usage: unmount-analysis HFIR|SNS"
         return 1
     end
-    echo "Unmounting analysis server for $argv[1]..."
-    fusermount3 -u ~/dev/ornl/analysis/$argv[1]
-    # set inst $argv[1]
-    # echo "Unmounting analysis server for $inst..."
-    # fusermount3 -u ~/dev/ornl/analysis/SNS/$inst
+    set inst (string upper $argv[1])
+    echo Unmounting analysis server for $inst...
+    fusermount3 -u ~/dev/ornl/analysis/$inst
 end
 
 ### VPN shortcuts ###
