@@ -50,10 +50,12 @@ end
 
 function mount-analysis -d "Mount the analysis server directory for given instrument"
     if test (count $argv) -ne 1
-        echo "Usage: mount-analysis HFIR|SNS"
+        echo "Usage: mount-analysis <dir to mount>"
+        echo "Example: mount-analysis sns"
         return 1
     end
-    set inst (string upper $argv[1])
+    # set inst (string upper $argv[1])
+    set inst $argv[1]
     echo Mounting analysis server for $inst...
     mkdir -p ~/dev/ornl/analysis/$inst
     sshfs ge2@analysis.sns.gov:/$inst ~/dev/ornl/analysis/$inst # -o defer_permissions,volname=$inst
@@ -64,7 +66,8 @@ function unmount-analysis -d "Unmount the mountpoint for analysis server for giv
         echo "Usage: unmount-analysis HFIR|SNS"
         return 1
     end
-    set inst (string upper $argv[1])
+    # set inst (string upper $argv[1])
+    set inst $argv[1]
     echo Unmounting analysis server for $inst...
     fusermount3 -u ~/dev/ornl/analysis/$inst
 end

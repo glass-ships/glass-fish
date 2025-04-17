@@ -43,6 +43,7 @@ abbr -a jlab 'jupyter lab --no-browser' # start jupyter lab
 # Git #
 #-----#
 
+abbr -a glc 'git ls-files | xargs wc -l'
 abbr -a gs 'git status'
 abbr -a gss 'git status -sb'
 abbr -a glog 'git log --oneline --graph --decorate --all'
