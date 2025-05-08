@@ -44,7 +44,7 @@ end
 
 # >>> conda initialize >>>
 if test -f $HOME/miniforge3/bin/conda
-    eval $HOME/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+    eval $HOME/miniforge3/bin/conda "shell.fish" hook $argv | source
 else
     if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
         . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
@@ -111,6 +111,15 @@ if test -e $HOME/.config/nvm/nvm.sh
     load_nvm >/dev/stderr
 end
 
+set --export BUN_INSTALL "$HOME/.bun"
+if test -d $BUN_INSTALL
+    set --export PATH $BUN_INSTALL/bin $PATH
+end
+
+if test -d ~/.cargo/bin
+    fish_add_path -gpP ~/.cargo/bin
+end
+
 if type -q direnv
     eval (direnv hook fish)
     # direnv hook fish | source
@@ -118,18 +127,13 @@ end
 
 if test -d ~/.pixi/bin
     fish_add_path -gpP ~/.pixi/bin
+    pixi completion --shell fish | source
 end
 
-if test -d ~/.cargo/bin
-    fish_add_path -gpP ~/.cargo/bin
+if type -q starship
+    starship init fish | source
 end
 
-set --export BUN_INSTALL "$HOME/.bun"
-if test -d $BUN_INSTALL
-    set --export PATH $BUN_INSTALL/bin $PATH
-end
-
-# configure thefuck 
 # thefuck --alias | source
 
 ####################################
