@@ -33,19 +33,16 @@ abbr -a ...... 'cd ../../../../..'
 abbr -a wpy 'which python'
 abbr -a pyver 'python --version'
 
-abbr -a cenv 'conda env list'
-abbr -a cact 'conda activate'
-
 abbr -a poetry-clear 'poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
-abbr -a jlab 'jupyter lab --no-browser' # start jupyter lab
+# abbr -a jlab 'jupyter lab --no-browser' # start jupyter lab
 
 #-----#
 # Git #
 #-----#
 
-abbr -a glc 'git ls-files | xargs wc -l'
 abbr -a gs 'git status'
 abbr -a gss 'git status -sb'
+abbr -a glc 'git ls-files | xargs wc -l'
 abbr -a glog 'git log --oneline --graph --decorate --all'
 
 abbr -a gsb 'git switch'
@@ -76,7 +73,7 @@ abbr -a docker-rm-containers 'docker rm (docker ps -a -q)'
 # GCP #
 #-----#
 
-abbr -a gcssh 'gcloud compute ssh'
+# abbr -a gcssh 'gcloud compute ssh'
 
 
 #------#
@@ -88,7 +85,7 @@ abbr -a install-pixi "curl -fsSL https://pixi.sh/install.sh | bash"
 abbr -a install-rust "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 abbr -a vscode '/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 
-abbr -a get-spotify-playlists 'cd ~/dev/spotipy-stuff ;; poetry -C ~/dev/DISCORD/compass-bot run python scripts/download_spotify_playlists.py -u oceanblocker ;; cd -'
+abbr -a get-spotify-playlists 'cd ~/dev/_scripts/spotipy-stuff ;; poetry -C ~/dev/DISCORD/compass-bot run python scripts/download_spotify_playlists.py ;; cd -'
 
 abbr -a ssh-compass 'ssh root@$COMPASS_IP'
 abbr -a update-compass 'cd ~/compass-bot/ ;; poetry run compass stop ;; git pull ;; poetry run compass -v start'
