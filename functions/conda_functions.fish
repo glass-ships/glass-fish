@@ -37,24 +37,47 @@
 # end
 
 
-function conda_activate --on-variable PWD -d "activate conda env"
+function venv_activate --on-variable PWD -d "activate conda env/venv on cd"
     if [ -f (pwd)/.condaconfig ]
-        set -gx CONDACONFIGDIR (pwd)
+        set -gx VENVDIR (pwd)
         conda activate (cat .condaconfig)
-    end
-    if not [ (string match "*$CONDACONFIGDIR*" (pwd)) ]
-        set -e CONDACONFIGDIR
-        conda deactivate
-    end
-    if [ -f (pwd)/.mambaconfig ]
-        set -gx MAMMACONFIGDIR (pwd)
+    else if [ -f (pwd)/.mambaconfig ]
+        set -gx VENVDIR (pwd)
         mamba activate (cat .mambaconfig)
+    else if [ -f (pwd)/.venv/Scripts/activate ]
+        set -gx VENVDIR (pwd)
+        source ./.venv/Scripts/activate
+    else if [ -f (pwd)/.venv/bin/activate.fish ]
+        set -gx VENVDIR (pwd)
+        source ./.venv/bin/activate.fish
     end
-    if not [ (string match "*$MAMMACONFIGDIR*" (pwd)) ]
-        set -e MAMMACONFIGDIR
-        mamba deactivate
+    if not [ (string match "*$VENVDIR*" (pwd)) ]
+        set -e VENVDIR
+        deactivate
+        conda deactivate
+        # mamba deactivate
     end
 end
+
+
+# function conda_activate --on-variable PWD -d "activate conda env"
+#     if [ -f (pwd)/.condaconfig ]
+#         set -gx CONDACONFIGDIR (pwd)
+#         conda activate (cat .condaconfig)
+#     end
+#     if not [ (string match "*$CONDACONFIGDIR*" (pwd)) ]
+#         set -e CONDACONFIGDIR
+#         conda deactivate
+#     end
+#     if [ -f (pwd)/.mambaconfig ]
+#         set -gx MAMBACONFIGDIR (pwd)
+#         mamba activate (cat .mambaconfig)
+#     end
+#     if not [ (string match "*$MAMBACONFIGDIR*" (pwd)) ]
+#         set -e MAMBACONFIGDIR
+#         mamba deactivate
+#     end
+# end
 
 
 function install-miniforge -d "install miniforge"

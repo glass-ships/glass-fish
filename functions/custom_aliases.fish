@@ -4,12 +4,12 @@
 # General #
 #---------#
 
-abbr -a env 'env | sort'          # sorted env
-abbr -a grep 'grep -n'            # always grep with line numbers
+abbr -a env 'env | sort' # sorted env
+abbr -a grep 'grep -n' # always grep with line numbers
 abbr -a sfind 'sudo find / -name' # find search entire filesystem
-abbr -a pls 'sudo -E'             # sudo with user's env vars
-abbr -a howbig 'du -csh'          # check a folder size
-abbr -a res 'echo $status'        # echo the last command's exit status
+abbr -a pls 'sudo -E' # sudo with user's env vars
+abbr -a howbig 'du -csh' # check a folder size
+abbr -a res 'echo $status' # echo the last command's exit status
 abbr -a upd 'sudo apt update -y && sudo apt full-upgrade -y'
 
 #------------#
@@ -83,9 +83,11 @@ abbr -a docker-rm-containers 'docker rm (docker ps -a -q)'
 abbr -a install-bun "curl -fsSL https://bun.sh/install | bash"
 abbr -a install-pixi "curl -fsSL https://pixi.sh/install.sh | bash"
 abbr -a install-rust "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
+abbr -a install-uv "wget -qO- https://astral.sh/uv/install.sh | sh"
+
 abbr -a vscode '/mnt/d/Programs/Google\ Drive/Apps/VSCode/bin/code'
 
-abbr -a get-spotify-playlists 'cd ~/dev/_scripts/spotipy-stuff ;; poetry -C ~/dev/DISCORD/compass-bot run python scripts/download_spotify_playlists.py ;; cd -'
+abbr -a get-spotify-playlists 'cd ~/dev/_scripts/spotipy-stuff ;; uv run python scripts/download_spotify_playlists.py ;; cd -'
 
 abbr -a ssh-compass 'ssh root@$COMPASS_IP'
-abbr -a update-compass 'cd ~/compass-bot/ ;; poetry run compass stop ;; git pull ;; poetry run compass -v start'
+abbr -a update-compass 'cd ~/compass-bot/ ;; uv run compass stop ;; git pull ;; uv run compass -v start'
