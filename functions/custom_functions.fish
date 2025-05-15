@@ -41,3 +41,61 @@ function update-cloudflared -d "update cloudflared"
     sudo dpkg -i cloudflared-linux-amd64.deb
     rm cloudflared-linux-amd64.deb
 end
+
+
+### Python/Conda stuff
+
+function venv_activate --on-variable PWD -d "activate conda env/venv on cd"
+    if [ -f (pwd)/.condaconfig ]
+        set -gx VENVDIR (pwd)
+        conda activate (cat .condaconfig)
+    else if [ -f (pwd)/.venv/Scripts/activate ]
+        set -gx VENVDIR (pwd)
+        source ./.venv/Scripts/activate
+    else if [ -f (pwd)/.venv/bin/activate.fish ]
+        set -gx VENVDIR (pwd)
+        source ./.venv/bin/activate.fish
+    # else if [ -f (pwd)/.mambaconfig ]
+    #     set -gx VENVDIR (pwd)
+    #     mamba activate (cat .mambaconfig)
+    end
+    if not [ (string match "*$VENVDIR*" (pwd)) ]
+        set -e VENVDIR
+        if type -q deactivate
+            deactivate
+        else if test -n "$CONDA_PYTHON_EXE"
+            conda deactivate
+        end
+    end
+end
+
+
+function install-miniforge -d "install miniforge"
+    # Install Miniforge
+    wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-(uname)-(uname -m).sh
+    bash Miniforge3-(uname)-(uname -m).sh
+end
+
+
+function uninstall-miniforge -d "uninstall miniforge"
+    if not [ (count $argv) -eq 0 ] && [ $argv[1] = check ]
+        conda init --reverse --dry-run
+        return
+    else
+        conda init --reverse
+    end
+    set CONDA_BASE_ENVIRONMENT (conda info --base)
+    echo "The next command will delete all files in {$CONDA_BASE_ENVIRONMENT}."
+    set -l response (read -l -P "Continue? [y/n]")
+    if not string match -q "y*" -- string lower $response
+        echo "Aborting..."
+        return
+    end
+    echo "Deleting {$CONDA_BASE_ENVIRONMENT}..."
+    rm -rf {$CONDA_BASE_ENVIRONMENT}
+    echo "{$HOME}/.condarc will be removed if it exists"
+    rm -f "{$HOME}/.condarc"
+    echo "{$HOME}/.conda and underlying files will be removed if they exist."
+    rm -fr {$HOME}/.conda
+    echo "Uninstall complete."
+end
