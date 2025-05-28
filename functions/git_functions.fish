@@ -20,7 +20,7 @@ function pull-all -d "git pull all repos in specified dirs"
             end
         end
         echo ————————————————————————————————————————
-        echo \tFinished in (pwd)
+        echo === Finished in (pwd) ===
         if not test $dir = '.'
             cd $current_dir
         end
