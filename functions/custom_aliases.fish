@@ -6,10 +6,10 @@
 
 abbr -a env 'env | sort' # sorted env
 abbr -a grep 'grep -n' # always grep with line numbers
-abbr -a sfind 'sudo find / -name' # find search entire filesystem
-abbr -a pls 'sudo -E' # sudo with user's env vars
 abbr -a howbig 'du -csh' # check a folder size
+abbr -a pls 'sudo -E' # sudo with user's env vars
 abbr -a res 'echo $status' # echo the last command's exit status
+abbr -a sfind 'sudo find / -name' # find search entire filesystem
 abbr -a upd 'sudo apt update -y && sudo apt full-upgrade -y'
 
 ##############
@@ -19,7 +19,6 @@ abbr -a upd 'sudo apt update -y && sudo apt full-upgrade -y'
 abbr -a ll 'ls -al1vF --color=auto'
 abbr -a dev 'cd ~/dev'
 abbr -a -- - 'cd -'
-# abbr -a -- - 'cd $OLDPWD'
 abbr -a .. 'cd ..'
 abbr -a ... 'cd ../..'
 abbr -a .... 'cd ../../..'
