@@ -38,33 +38,6 @@ if test -e $DIR/secrets.json || test -L $DIR/secrets.json
     end
 end
 
-#-----------------------------------#
-# Conda / Mamba checks and settings #
-#-----------------------------------#
-
-# >>> conda initialize >>>
-if test -f $HOME/miniforge3/bin/conda
-    eval $HOME/miniforge3/bin/conda "shell.fish" hook $argv | source
-else
-    if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
-        . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
-    else
-        set -x PATH "$HOME/miniforge3/bin" $PATH
-    end
-end
-
-if test -f "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
-    source "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
-end
-# <<< conda initialize <<<
-
-# >>> mamba initialize >>>
-# set -gx MAMBA_EXE "$HOME/miniforge3/bin/mamba"
-# set -gx MAMBA_ROOT_PREFIX "$HOME/.local/share/mamba"
-# $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-# <<< mamba initialize <<<
-
-
 #------------------------#
 # Python/Poetry settings #
 #------------------------#
@@ -76,6 +49,12 @@ if test -d /opt/poetry/bin
 end
 set -u VIRTUAL_ENV
 set -u VIRTUAL_ENV_PROMPT
+
+if test -e ~/.local/bin/micromamba
+    set -gx MAMBA_EXE "/home/ge2/.local/bin/micromamba"
+    set -gx MAMBA_ROOT_PREFIX "/home/ge2/micromamba"
+    $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+end
 
 #----------------#
 # pyenv settings #

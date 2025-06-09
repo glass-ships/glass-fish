@@ -31,7 +31,7 @@ function dev-lr -d "Install local copy of LiquidsReflectometer"
     cd ~/dev/ornl/RefRed
     pip uninstall lr_reduction -y
     cd ~/dev/ornl/LiquidsReflectometer
-    conda activate refred
+    micromamba activate refred
     pip install -e .
     cd -
 end
