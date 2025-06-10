@@ -78,9 +78,10 @@ abbr -a docker-rm-containers 'docker rm (docker ps -a -q)'
 ########
 
 abbr -a install-bun "curl -fsSL https://bun.sh/install | bash"
+abbr -a install-micromamba "curl -L micro.mamba.pm/install.sh | bash"
 abbr -a install-pixi "curl -fsSL https://pixi.sh/install.sh | bash"
 abbr -a install-rust "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
-abbr -a install-uv "wget -qO- https://astral.sh/uv/install.sh | sh"
+abbr -a install-uv "curl -fsSL https://astral.sh/uv/install.sh | sh"
 
 abbr -a get-spotify-playlists 'cd ~/dev/_scripts/spotipy-stuff ;; uv run python scripts/download_spotify_playlists.py ;; cd -'
 
