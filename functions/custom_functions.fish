@@ -85,17 +85,17 @@ function uninstall-miniforge -d "uninstall miniforge"
         conda init --reverse
     end
     set CONDA_BASE_ENVIRONMENT (conda info --base)
-    echo "The next command will delete all files in {$CONDA_BASE_ENVIRONMENT}."
+    echo "The next command will delete all files in $CONDA_BASE_ENVIRONMENT."
     set -l response (read -l -P "Continue? [y/n]")
     if not string match -q "y*" -- string lower $response
         echo "Aborting..."
         return
     end
-    echo "Deleting {$CONDA_BASE_ENVIRONMENT}..."
+    echo "Deleting $CONDA_BASE_ENVIRONMENT..."
     rm -rf {$CONDA_BASE_ENVIRONMENT}
-    echo "{$HOME}/.condarc will be removed if it exists"
-    rm -f "{$HOME}/.condarc"
-    echo "{$HOME}/.conda and underlying files will be removed if they exist."
+    echo "$HOME/.condarc will be removed if it exists"
+    rm -f "$HOME/.condarc"
+    echo "$HOME/.conda and underlying files will be removed if they exist."
     rm -fr {$HOME}/.conda
     echo "Uninstall complete."
 end
