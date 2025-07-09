@@ -112,6 +112,10 @@ if test -d $BUN_INSTALL
     set --export PATH $BUN_INSTALL/bin $PATH
 end
 
+if test -d ~/dev/bin
+    fish_add_path -gpP ~/dev/bin
+end
+
 if test -d ~/.cargo/bin
     fish_add_path -gpP ~/.cargo/bin
 end
