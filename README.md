@@ -55,3 +55,4 @@ Custom fish environment with a (kinda) pretty prompt, and some convenience alias
 This repo could probably use some regular TLC. If you're interested in helping out, just create an issue, or fork the repo and merge request back in!
 
 ~ Glass
+
