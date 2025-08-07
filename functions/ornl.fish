@@ -1,14 +1,3 @@
-### cd shortcuts ###
-
-abbr -a cdbumps 'cd ~/dev/ornl/bumps'
-abbr -a cdr1d 'cd ~/dev/ornl/refl1d'
-abbr -a cdref 'cd ~/dev/ornl/RefRed'
-abbr -a cdlr 'cd ~/dev/ornl/LiquidsReflectometer'
-abbr -a cdsans 'cd ~/dev/ornl/drtsans'
-abbr -a cdlds 'cd ~/dev/ornl/live_data_server'
-abbr -a cdman 'cd ~/dev/ornl/mantid'
-
-
 ### Mantid shortcuts ###
 
 function build-mantid -d "Build Mantid from source"
