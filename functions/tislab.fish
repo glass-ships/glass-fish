@@ -1,14 +1,5 @@
 ### TISLAB functions
 
-# cd shortcuts
-
-abbr -a mdocs 'cd ~/dev/TISLab/monarch-documentation'
-abbr -a mapp 'cd ~/dev/TISLab/monarch-app'
-abbr -a mingest 'cd ~/dev/TISLab/monarch-ingest'
-abbr -a mkoza 'cd ~/dev/TISLab/koza'
-abbr -a mmapping 'cd ~/dev/TISLab/monarch-mapping-commons'
-abbr -a mstack 'cd ~/dev/TISLab/monarch-stack-v3'
-
 # common command chains
 
 function test-koza

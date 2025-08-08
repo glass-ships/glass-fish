@@ -64,7 +64,7 @@ else
     if test -f "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
         . "$HOME/miniforge3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "$HOME/miniforge3/bin" $PATH
+        fish_add_path -gpP "$HOME/miniforge3/bin"
     end
 end
 
