@@ -51,6 +51,7 @@ function venv_activate --on-variable PWD -d "activate virtual env on cd"
         source ./.venv/Scripts/activate
     else if [ -f (pwd)/.venv/bin/activate.fish ]
         set -gx VENVDIR (pwd)
+        source ./.venv/bin/activate.fish
     else if [ -f (pwd)/.condaconfig ]
         set -gx VENVDIR (pwd)
         micromamba activate (cat .condaconfig)
