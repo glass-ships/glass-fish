@@ -1,3 +1,7 @@
+### ORNL ENV ###
+
+set -gx GALAXY_URL "calvera-test.ornl.gov"
+
 ### Mantid shortcuts ###
 
 function build-mantid -d "Build Mantid from source"
