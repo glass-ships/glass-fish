@@ -31,7 +31,6 @@ abbr -a ...... 'cd ../../../../..'
 
 abbr -a wpy 'which python'
 abbr -a pyver 'python --version'
-abbr -a mm 'micromamba'
 abbr -a poetry-clear 'poetry cache clear _default_cache --all ;; poetry cache clear PyPI --all'
 # abbr -a jlab 'jupyter lab --no-browser' # start jupyter lab
 

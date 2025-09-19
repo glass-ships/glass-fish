@@ -50,13 +50,6 @@ end
 set -u VIRTUAL_ENV
 set -u VIRTUAL_ENV_PROMPT
 
-if test -e ~/.local/bin/micromamba
-    set -gx MAMBA_EXE "/home/ge2/.local/bin/micromamba"
-    set -gx MAMBA_ROOT_PREFIX "/home/ge2/micromamba"
-    # $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-    fish_add_path -gpP /home/ge2/micromamba/condabin
-end
-
 # >>> conda initialize >>>
 if test -f $HOME/miniforge3/bin/conda
     eval $HOME/miniforge3/bin/conda "shell.fish" hook $argv | source
