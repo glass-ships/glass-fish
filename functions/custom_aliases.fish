@@ -11,6 +11,7 @@ abbr -a pls 'sudo -E' # sudo with user's env vars
 abbr -a res 'echo $status' # echo the last command's exit status
 abbr -a sfind 'sudo find / -name' # find search entire filesystem
 abbr -a upd 'sudo apt update -y && sudo apt full-upgrade -y'
+abbr -a upd-tools "uv self update && pixi self-update && bun upgrade && rustup update"
 
 ##############
 # Navigation #

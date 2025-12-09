@@ -19,7 +19,7 @@ end
 
 ### Reflectometry shortcuts ###
 
-function dev-lr -d "Install local copy of LiquidsReflectometer"
+function dev-lr -d "Install local copy of lr_red for testing in refred"
     echo "Installing local copy of LiquidsReflectometer..."
     cd ~/dev/ornl/RefRed
     pip uninstall lr_reduction -y
@@ -30,6 +30,14 @@ function dev-lr -d "Install local copy of LiquidsReflectometer"
 end
 
 ### Refl1D shortcuts ###
+
+function dev-bumps -d "Install local copy of bumps for testing in refl1d"
+    cd ~/dev/ornl/bumps
+    uv build
+    cd ~/dev/ornl/refl1d
+    uv pip uninstall bumps
+    uv pip install ../bumps/dist/bumps-1.0.3-py3-none-any.whl
+end
 
 function linkbumps -d "Link bumps to the refl1d directory"
     cd ~/dev/ornl/bumps/bumps/webview/client

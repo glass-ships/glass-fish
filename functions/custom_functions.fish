@@ -45,30 +45,30 @@ end
 
 ### Python env stuff
 
-function venv_activate --on-variable PWD -d "activate virtual env on cd"
-    if [ -f (pwd)/.venv/Scripts/activate ]
-        set -gx VENVDIR (pwd)
-        source ./.venv/Scripts/activate
-    else if [ -f (pwd)/.venv/bin/activate.fish ]
-        set -gx VENVDIR (pwd)
-        source ./.venv/bin/activate.fish
-    else if [ -f (pwd)/.condaconfig ]
-        set -gx VENVDIR (pwd)
-        micromamba activate (cat .condaconfig)
-        source ./.venv/bin/activate.fish
-    else if [ -f (pwd)/.mambaconfig ]
-        set -gx VENVDIR (pwd)
-        mamba activate (cat .mambaconfig)
-    end
-    if not [ (string match "*$VENVDIR*" (pwd)) ]
-        set -e VENVDIR
-        if type -q deactivate
-            deactivate
-        else if test -n "$CONDA_PYTHON_EXE"
-            micromamba deactivate
-        end
-    end
-end
+# function venv_activate --on-variable PWD -d "activate virtual env on cd"
+#     if [ -f (pwd)/.venv/Scripts/activate ]
+#         set -gx VENVDIR (pwd)
+#         source ./.venv/Scripts/activate
+#     else if [ -f (pwd)/.venv/bin/activate.fish ]
+#         set -gx VENVDIR (pwd)
+#         source ./.venv/bin/activate.fish
+#     else if [ -f (pwd)/.condaconfig ]
+#         set -gx VENVDIR (pwd)
+#         micromamba activate (cat .condaconfig)
+#         source ./.venv/bin/activate.fish
+#     else if [ -f (pwd)/.mambaconfig ]
+#         set -gx VENVDIR (pwd)
+#         mamba activate (cat .mambaconfig)
+#     end
+#     if not [ (string match "*$VENVDIR*" (pwd)) ]
+#         set -e VENVDIR
+#         if type -q deactivate
+#             deactivate
+#         else if test -n "$CONDA_PYTHON_EXE"
+#             micromamba deactivate
+#         end
+#     end
+# end
 
 function install-miniforge -d "install miniforge"
     # Install Miniforge
