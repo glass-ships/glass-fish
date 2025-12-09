@@ -4,12 +4,10 @@
 #     echo -n (string trim -r -l $argv)
 # end
 
-
 function cs -d "cd and ls (with auto conda activation)"
     cd $argv[1]
     ls -al
 end
-
 
 function move -d "mv, create dir if DNE"
     set destination $argv[-1]
@@ -20,7 +18,6 @@ function move -d "mv, create dir if DNE"
     end
     mv $files $destination
 end
-
 
 function keep -d "rm all except"
     set -l files *
@@ -33,7 +30,6 @@ function keep -d "rm all except"
     rm -rf $files
 end
 
-
 ### Cloudflare stuff
 
 function update-cloudflared -d "update cloudflared"
@@ -41,7 +37,6 @@ function update-cloudflared -d "update cloudflared"
     sudo dpkg -i cloudflared-linux-amd64.deb
     rm cloudflared-linux-amd64.deb
 end
-
 
 ### Python env stuff
 
@@ -69,34 +64,3 @@ end
 #         end
 #     end
 # end
-
-function install-miniforge -d "install miniforge"
-    # Install Miniforge
-    wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-(uname)-(uname -m).sh
-    bash Miniforge3-(uname)-(uname -m).sh
-    rm Miniforge3-(uname)-(uname -m).sh
-end
-
-
-function uninstall-miniforge -d "uninstall miniforge"
-    if not [ (count $argv) -eq 0 ] && [ $argv[1] = check ]
-        conda init --reverse --dry-run
-        return
-    else
-        conda init --reverse
-    end
-    set CONDA_BASE_ENVIRONMENT (conda info --base)
-    echo "The next command will delete all files in $CONDA_BASE_ENVIRONMENT."
-    set -l response (read -l -P "Continue? [y/n]")
-    if not string match -q "y*" -- string lower $response
-        echo "Aborting..."
-        return
-    end
-    echo "Deleting $CONDA_BASE_ENVIRONMENT..."
-    rm -rf {$CONDA_BASE_ENVIRONMENT}
-    echo "$HOME/.condarc will be removed if it exists"
-    rm -f "$HOME/.condarc"
-    echo "$HOME/.conda and underlying files will be removed if they exist."
-    rm -fr {$HOME}/.conda
-    echo "Uninstall complete."
-end

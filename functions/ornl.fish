@@ -1,6 +1,6 @@
 ### ORNL ENV ###
 
-set -gx GALAXY_URL "calvera-test.ornl.gov"
+# set -gx GALAXY_URL "calvera-test.ornl.gov"
 
 ### Mantid shortcuts ###
 
