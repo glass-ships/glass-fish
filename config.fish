@@ -21,8 +21,8 @@ umask 022
 set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
 
 # set -gx GDK_BACKEND x11,wayland
-set -gx XDG_SESSION_TYPE "xcb wayland"
-set -gx XDG_CONFIG_HOME $HOME/.config
+# set -gx XDG_SESSION_TYPE "xcb wayland"
+# set -gx XDG_CONFIG_HOME $HOME/.config
 
 #----------------------------------------#
 # Source secrets as env vars, if present #

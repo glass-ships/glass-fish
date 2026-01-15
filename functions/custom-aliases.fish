@@ -12,6 +12,7 @@ abbr -a res 'echo $status' # echo the last command's exit status
 abbr -a sfind 'sudo find / -name' # find search entire filesystem
 abbr -a upd 'sudo apt update -y && sudo apt full-upgrade -y'
 abbr -a upd-tools "uv self update && pixi self-update && bun upgrade && rustup update"
+abbr -a apt-cleanup 'sudo apt autoremove -y && sudo apt autoclean -y && sudo apt autopurge -y'
 
 ##############
 # Navigation #
