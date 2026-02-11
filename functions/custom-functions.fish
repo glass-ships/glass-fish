@@ -33,9 +33,27 @@ end
 ### Cloudflare stuff
 
 function update-cloudflared -d "update cloudflared"
-    wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-    sudo dpkg -i cloudflared-linux-amd64.deb
-    rm cloudflared-linux-amd64.deb
+    if type -q apt
+        # Debian/Ubuntu
+        wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+        sudo dpkg -i cloudflared-linux-amd64.deb
+        rm cloudflared-linux-amd64.deb
+    else if type -q pacman
+        # Arch Linux - use AUR or direct binary
+        if type -q yay
+            yay -S cloudflared-bin
+        else if type -q paru
+            paru -S cloudflared-bin
+        else
+            # Fallback to direct binary installation
+            wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+            chmod +x cloudflared-linux-amd64
+            sudo mv cloudflared-linux-amd64 /usr/local/bin/cloudflared
+        end
+    else
+        echo "Unsupported distribution - please install cloudflared manually"
+        return 1
+    end
 end
 
 ### Python env stuff

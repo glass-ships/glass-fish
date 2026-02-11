@@ -17,8 +17,14 @@ umask 022
 ### Environment Setup ###
 #########################
 
-# Reset PATH based on system default (/etc/environment)
-set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
+# Reset PATH based on system default
+if test -f /etc/environment
+    # Debian/Ubuntu typically use /etc/environment
+    set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
+else
+    # Arch and others - set PATH manually
+    set -gx PATH $HOME/.local/bin /usr/local/sbin /usr/local/bin /usr/bin /bin
+end
 
 # set -gx GDK_BACKEND x11,wayland
 # set -gx XDG_SESSION_TYPE "xcb wayland"
@@ -42,7 +48,7 @@ end
 # Python/Poetry settings #
 #------------------------#
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
-set -gx POETRY_HOME /opt/poetry
+# set -gx POETRY_HOME /opt/poetry
 if test -d /opt/poetry/bin
     fish_add_path -gpP /opt/poetry/bin
     poetry config virtualenvs.in-project true
