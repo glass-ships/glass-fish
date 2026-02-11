@@ -19,11 +19,14 @@ umask 022
 
 # Reset PATH based on system default
 if test -f /etc/environment
-    # Debian/Ubuntu typically use /etc/environment
     set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
 else
-    # Arch and others - set PATH manually
     set -gx PATH $HOME/.local/bin /usr/local/sbin /usr/local/bin /usr/bin /bin
+end
+
+# Fallback: if PATH only contains .local/bin, add essential system paths
+if test (count $PATH) -eq 1; and test "$PATH[1]" = "$HOME/.local/bin"
+    set -gx PATH $PATH /usr/local/sbin /usr/local/bin /usr/bin /bin
 end
 
 # set -gx GDK_BACKEND x11,wayland
@@ -71,7 +74,6 @@ if test -f "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
     source "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
 end
 # <<< conda initialize <<<
-
 
 #----------------#
 # pyenv settings #
