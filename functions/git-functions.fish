@@ -16,6 +16,8 @@ function pull-all -d "git pull all repos in specified dirs"
                 echo ————————————————————————————————————————
                 echo Pulling $repo @ (git branch --show-current)...
                 git pull
+                echo \nCleaning up branches in $repo...
+                git-cleanup-branches
                 cd ..
             end
         end
