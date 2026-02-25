@@ -109,9 +109,9 @@ if test -e $HOME/.config/nvm/nvm.sh
     load_nvm >/dev/stderr
 end
 
-set --export BUN_INSTALL "$HOME/.bun"
+set -gx BUN_INSTALL "$HOME/.bun"
 if test -d $BUN_INSTALL
-    set --export PATH $BUN_INSTALL/bin $PATH
+    set -gx PATH $BUN_INSTALL/bin $PATH
 end
 
 if test -d ~/dev/bin
@@ -140,3 +140,7 @@ end
 
 ####################################
 set -e DIR
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
