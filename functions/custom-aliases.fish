@@ -20,7 +20,7 @@ else if type -q pacman
     abbr -a pkg-cleanup 'sudo pacman -Sc && sudo pacman -Rns (pacman -Qtdq)'
 end
 
-abbr -a upd-tools "uv self update && pixi self-update && bun upgrade && rustup update"
+# abbr -a upd-tools "uv self update && pixi self-update && bun upgrade && rustup update"
 
 ##############
 # Navigation #

@@ -30,6 +30,13 @@ function keep -d "rm all except"
     rm -rf $files
 end
 
+function upd-tools -d "update all tools (uv, pixi, bun, rustup)"
+    echo "Updating uv..." && uv self update || echo "Failed to update uv"
+    printf "\nUpdating pixi...\n" && pixi self-update || echo "Failed to update pixi"
+    printf "\nUpdating bun...\n" && bun upgrade || echo "Failed to update bun"
+    printf "\nUpdating rustup...\n" && rustup update || echo "Failed to update rustup"
+end
+
 ### Cloudflare stuff
 
 function update-cloudflared -d "update cloudflared"
