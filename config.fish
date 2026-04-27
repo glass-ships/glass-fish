@@ -17,8 +17,17 @@ umask 022
 ### Environment Setup ###
 #########################
 
-# Reset PATH based on system default (/etc/environment)
-set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
+# Reset PATH based on system default
+if test -f /etc/environment
+    set -gx PATH $HOME/.local/bin (string split ":" (cat /etc/environment | grep -oP '(?<=PATH=")[^"]*'))
+else
+    set -gx PATH $HOME/.local/bin /usr/local/sbin /usr/local/bin /usr/bin /bin
+end
+
+# Fallback: if PATH only contains .local/bin, add essential system paths
+if test (count $PATH) -eq 1; and test "$PATH[1]" = "$HOME/.local/bin"
+    set -gx PATH $PATH /usr/local/sbin /usr/local/bin /usr/bin /bin
+end
 
 # set -gx GDK_BACKEND x11,wayland
 # set -gx XDG_SESSION_TYPE "xcb wayland"
@@ -42,7 +51,7 @@ end
 # Python/Poetry settings #
 #------------------------#
 set -gx PYTHON_KEYRING_BACKEND keyring.backends.null.Keyring
-set -gx POETRY_HOME /opt/poetry
+# set -gx POETRY_HOME /opt/poetry
 if test -d /opt/poetry/bin
     fish_add_path -gpP /opt/poetry/bin
     poetry config virtualenvs.in-project true
@@ -65,7 +74,6 @@ if test -f "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
     source "$HOME/miniforge3/etc/fish/conf.d/mamba.fish"
 end
 # <<< conda initialize <<<
-
 
 #----------------#
 # pyenv settings #
@@ -101,9 +109,9 @@ if test -e $HOME/.config/nvm/nvm.sh
     load_nvm >/dev/stderr
 end
 
-set --export BUN_INSTALL "$HOME/.bun"
+set -gx BUN_INSTALL "$HOME/.bun"
 if test -d $BUN_INSTALL
-    set --export PATH $BUN_INSTALL/bin $PATH
+    set -gx PATH $BUN_INSTALL/bin $PATH
 end
 
 if test -d ~/dev/bin
@@ -132,3 +140,7 @@ end
 
 ####################################
 set -e DIR
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

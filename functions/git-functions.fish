@@ -16,6 +16,8 @@ function pull-all -d "git pull all repos in specified dirs"
                 echo ————————————————————————————————————————
                 echo Pulling $repo @ (git branch --show-current)...
                 git pull
+                echo \nCleaning up branches in $repo...
+                git-cleanup-branches
                 cd ..
             end
         end
@@ -29,7 +31,8 @@ function pull-all -d "git pull all repos in specified dirs"
 end
 
 function git-cleanup-branches -d "git delete local branches not on remote"
-    set default_branch (git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+    # set default_branch (git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+    set default_branch (git remote show origin | grep 'HEAD branch' | cut -d: -f2 | sed -e 's/^[[:space:]]*//')
     for branch in (git branch --merged $default_branch)
         set b (string trim -r -l $branch)
         if not string match -q "*$default_branch" $b
