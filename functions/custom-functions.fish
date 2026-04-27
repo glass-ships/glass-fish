@@ -30,12 +30,30 @@ function keep -d "rm all except"
     rm -rf $files
 end
 
+function upd-tools -d "update all tools (uv, pixi, bun, rustup)"
+    echo "Updating uv..." && uv self update || echo "Failed to update uv"
+    printf "\nUpdating pixi...\n" && pixi self-update || echo "Failed to update pixi"
+    printf "\nUpdating bun...\n" && bun upgrade || echo "Failed to update bun"
+    printf "\nUpdating rustup...\n" && rustup update || echo "Failed to update rustup"
+end
+
 ### Cloudflare stuff
 
 function update-cloudflared -d "update cloudflared"
-    wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-    sudo dpkg -i cloudflared-linux-amd64.deb
-    rm cloudflared-linux-amd64.deb
+    if type -q apt
+        # Debian/Ubuntu
+        wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+        sudo dpkg -i cloudflared-linux-amd64.deb
+        rm cloudflared-linux-amd64.deb
+    else if type -q pacman
+        # Arch Linux
+        wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+        chmod +x cloudflared-linux-amd64
+        sudo mv cloudflared-linux-amd64 /usr/local/bin/cloudflared
+    else
+        echo "Unsupported distribution - please install cloudflared manually"
+        return 1
+    end
 end
 
 ### Python env stuff
