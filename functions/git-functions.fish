@@ -5,20 +5,37 @@ function ship -d "git add, commit, push"
 end
 
 function pull-all -d "git pull all repos in specified dirs"
+    argparse 'r/recursive' -- $argv
+    or return
+
     set current_dir (pwd)
     for dir in $argv
         cd $dir
         echo \n========================================
         echo Pulling all repos in (pwd)...
-        for repo in *
-            if test -d $repo && test -d $repo/.git
-                cd $repo
+        if set --query _flag_recursive
+            # find .git dirs at any depth, so nested repos are pulled too
+            for gitdir in (find . -type d -name .git | sort)
+                set repo (dirname $gitdir)
+                pushd $repo
                 echo ————————————————————————————————————————
                 echo Pulling $repo @ (git branch --show-current)...
                 git pull
                 echo \nCleaning up branches in $repo...
                 git-cleanup-branches
-                cd ..
+                popd
+            end
+        else
+            for repo in *
+                if test -d $repo && test -d $repo/.git
+                    cd $repo
+                    echo ————————————————————————————————————————
+                    echo Pulling $repo @ (git branch --show-current)...
+                    git pull
+                    echo \nCleaning up branches in $repo...
+                    git-cleanup-branches
+                    cd ..
+                end
             end
         end
         echo ————————————————————————————————————————
