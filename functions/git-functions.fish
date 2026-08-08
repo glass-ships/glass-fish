@@ -5,7 +5,7 @@ function ship -d "git add, commit, push"
 end
 
 function pull-all -d "git pull all repos in specified dirs"
-    argparse 'r/recursive' -- $argv
+    argparse 'r/recursive=?' -- $argv
     or return
 
     set current_dir (pwd)
