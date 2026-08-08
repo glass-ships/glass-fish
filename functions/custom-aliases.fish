@@ -18,6 +18,7 @@ if type -q apt
 else if type -q pacman
     abbr -a upd 'sudo pacman -Syu'
     abbr -a pkg-cleanup 'sudo pacman -Sc && sudo pacman -Rns (pacman -Qtdq)'
+    abbr -a pkg-backup 'pacman -Qqet > ~/Downloads/pkglist.txt; and comm -13 (pacman -Qqdt | sort | psub) (pacman -Qqdtt | sort | psub) > ~/Downloads/optdeplist.txt'
 end
 
 # abbr -a upd-tools "uv self update && pixi self-update && bun upgrade && rustup update"
