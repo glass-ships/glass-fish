@@ -1,7 +1,7 @@
 function ship -d "git add, commit, push"
     git add -A
-    git commit -am $argv
-    git push
+    git commit -am "$argv[1]"
+    git push $argv[2..-1]
 end
 
 function pull-all -d "git pull all repos in specified dirs"
