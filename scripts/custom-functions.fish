@@ -5,7 +5,7 @@
 # end
 
 function cs -d "cd and ls (with auto conda activation)"
-    cd $argv[1]
+    cd $argv[1] || return 1
     ls -al
 end
 
@@ -36,6 +36,17 @@ function upd-tools -d "update all tools (uv, pixi, bun, rustup)"
     printf "\nUpdating bun...\n" && bun upgrade || echo "Failed to update bun"
     printf "\nUpdating rustup...\n" && rustup update || echo "Failed to update rustup"
 end
+
+function upd-vscode -d "Download latest VSCode and unpack to usual directory"
+    cd ~/dev/bin/vscode
+    keep data chrome-sandbox  # Clean up old files, keep data/ and chrome-sandbox
+    wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64" -O vscode.tar.gz &&
+        tar -xf vscode.tar.gz &&
+        mv VSCode-linux-x64/* . &&
+        rm -rf VSCode-linux-x64 vscode.tar.gz
+    cd -
+end    
+
 
 ### Cloudflare stuff
 

@@ -89,11 +89,11 @@ end
 ### Custom Aliases and Functions ###
 ####################################
 
-for file in $DIR/functions/*.fish
+for file in $DIR/scripts/*.fish
     switch $file
-        case $DIR"/functions/fish_prompt.fish"
+        case $DIR"/scripts/fish_prompt.fish"
             continue
-        case $DIR"/functions/bass.fish"
+        case $DIR"/scripts/bass.fish"
             continue
         case "*"
             # echo "importing $file" >/dev/stderr
@@ -141,6 +141,3 @@ end
 ####################################
 set -e DIR
 
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

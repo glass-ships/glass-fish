@@ -2,11 +2,14 @@
 function fish_prompt
     # remove welcome message
     set -U fish_greeting
+
     # $status gets nuked as soon as something else is run, e.g. set_color
     # so it has to be saved asap.
     set -l last_status $status
 
+    #####################################################################
     ### Git stuff
+
     set normal (set_color normal)
     set magenta (set_color magenta)
     set yellow (set_color yellow)
@@ -40,14 +43,15 @@ function fish_prompt
     set -g PINK (set_color FF34DD)
     set -g WHITE (set_color FFFFFF)
     set -g ce (set_color $fish_color_error)
+    #####################################################################
 
     # Clear the line because fish seems to emit the prompt twice,
     # i.e. the initial display, then when you press enter.
     printf "\033[K"
 
+    #####################################################################
     ### construct prompt
     # timestamp 
-    # printf "$PURPLE\n["(date "+$YELLOW%H:%M")"$PURPLE]"
     printf "$PURPLE\n["(date "+$YELLOW%Y-%m-%d %H:%M")"$PURPLE]"
     # current dir
     printf "%s$WHITE" (pwd | sed "s,/,$YELLOW/$CYAN,g")

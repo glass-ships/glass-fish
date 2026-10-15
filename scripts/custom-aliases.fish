@@ -23,6 +23,9 @@ end
 
 # abbr -a upd-tools "uv self update && pixi self-update && bun upgrade && rustup update"
 
+# CachyOS: Fix bluetooth suddenly not working
+abbr -a fix-bt 'sudo modprobe -r btusb && sudo modprobe btusb'
+
 ##############
 # Navigation #
 ##############
@@ -88,8 +91,10 @@ abbr -a install-bun "curl -fsSL https://bun.sh/install | bash"
 abbr -a install-pixi "curl -fsSL https://pixi.sh/install.sh | bash"
 abbr -a install-rust "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"
 abbr -a install-uv "curl -fsSL https://astral.sh/uv/install.sh | sh"
+abbr -a get-vscode "wget https://code.visualstudio.com/sha/download?build=stable&os=linux-x64 -O vscode.tar.gz"
 
 abbr -a get-spotify-playlists 'cd ~/dev/_scripts/spotipy-stuff ;; uv run python scripts/download_spotify_playlists.py ;; cd -'
 
 abbr -a ssh-compass 'ssh root@$COMPASS_IP'
 abbr -a update-compass 'cd ~/compass-bot/ ;; uv run compass stop ;; git pull ;; uv run compass -v start'
+
